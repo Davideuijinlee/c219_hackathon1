@@ -11,7 +11,7 @@ class Player {
     createStartingCards() {
         //gives you the starting two yellow spice card
         var yellowFactoryCard = {
-            'input': 0,
+            'input': [],
             'output': ['yellow', 'yellow']
         };
         //gives you the starting conversion spice card
