@@ -6,30 +6,32 @@ class GameBoard {
         this.factory = []; //length 6
         this.displayArea = $('body'); //change later
     }
-    createFactoryCard(input, output){
-        var createdFactoryCard = {
-            'input': input,
-            'output': output
-        };
+    createFactoryCard(){
+        // debugger;
         // console.log('create factory', createdFactoryCard);
         for(var factoryIndex = 0; factoryIndex < 6; factoryIndex++){
-            var currentFactoryCard = new FactoryCard(0, 2);
+            var input = this.randomNumber = Math.floor((Math.random() * (4)));
+            var output = this.randomNumber = Math.floor((Math.random() * (4)));
+            var currentFactoryCard = new FactoryCard(input, output);
             this.factory.push(currentFactoryCard);
-
+            console.log(this.factory);
         } 
-        return createdFactoryCard;
-    }
-    createCityCard(input, pointValue){
-        var createdCityCard = {
-            'input': input,
-            'value': pointValue
-        };
-        for(var cityIndex = 0; cityIndex < 5; cityIndex++){
-            var currentCityCard = new CityCard(0, 1);
-            this.city.push(currentCityCard);
+        if(this.factory.length < 6){
+            createFactoryCard();
         }
-        // console.log('create city', createdCityCard);
-        return createdCityCard;
+        // return createFactoryCard;
+    }
+    createCityCard(){
+        for(var cityIndex = 0; cityIndex < 5; cityIndex++){
+            var input = this.randomNumber = Math.floor((Math.random() * (4)));
+            var output = this.randomNumber = Math.floor((Math.random() * (10)));
+            var currentCityCard = new CityCard(input, output);
+            this.city.push(currentCityCard);
+            console.log(this.city)
+        } 
+        if(this.city.length < 5){
+            createCityCard();
+        }
     }
     moveCard(){
         // console.log('move card', moveCard());
