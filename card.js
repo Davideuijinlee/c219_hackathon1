@@ -10,8 +10,9 @@ class CityCard{
 }
 
 class FactoryCard{
-    constructor(){
-        this.price = 0;
+    constructor(input, output){
+        this.input = input;
+        this.output = output;
         this.isOwned = false;
         console.log("factory card created")
     }
