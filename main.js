@@ -33,4 +33,4 @@ var factoryCardArray = [{
 }];
 
 var test = new GameBoard();
-test.createCityCard(cityCardArray);
+test.displayCityCards(cityCardArray);
