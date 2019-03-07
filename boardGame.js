@@ -21,18 +21,18 @@ class GameBoard {
         }
         // return createFactoryCard;
     }
-    // createCityCard() {
-    //     for (var cityIndex = 0; cityIndex < 5; cityIndex++) {
-    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
-    //         var output = this.randomNumber = Math.floor((Math.random() * (10)));
-    //         var currentCityCard = new CityCard(input, output);
-    //         this.city.push(currentCityCard);
-    //         console.log(this.city)
-    //     }
-    //     if (this.city.length < 5) {
-    //         createCityCard();
-    //     }
-    // }
+    createCityCard() {
+        for (var cityIndex = 0; cityIndex < 5; cityIndex++) {
+            var input = this.randomNumber = Math.floor((Math.random() * (4)));
+            var output = this.randomNumber = Math.floor((Math.random() * (10)));
+            var currentCityCard = new CityCard(input, output);
+            this.city.push(currentCityCard);
+            console.log(this.city)
+        }
+        if (this.city.length < 5) {
+            createCityCard();
+        }
+    }
     moveCard() {
         // console.log('move card', moveCard());
     }
@@ -46,7 +46,7 @@ class GameBoard {
     }
 
     //displays the city cards onto the dom
-    //when to call this?
+    //when to call this? after buying city
     //clear DOM before adding if adding after buying?
     displayCityCards(array) {
         for (var index = 0; index < array.length; index++) {
