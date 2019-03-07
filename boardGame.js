@@ -10,24 +10,40 @@ class GameBoard {
         // }
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
-        // this.createStartingSpice();
+
+        this.createStartingSpice();
+    }
+
+    //ties in with creatingStartingSpice
+    createSpice(color) {
+        var newSpice = $('<div>').addClass('newSpice').css({
+            'background-color': color
+        });
+        newSpice.addClass(color);
+        $('.caravancard').append(newSpice);
+    };
+
+    //makes the spice colors pop up on the DOM
+    createStartingSpice() {
+        this.createSpice('yellow');
+        this.createSpice('red');
+        this.createSpice('green');
+        this.createSpice('brown');
+
     }
 
     handleClick() {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
-        console.log(this.callbacks);
     }
     callBack(event){
         var testVar = $(event.currentTarget);
-        console.log(event);
     }
     createFactoryCard() {
         // console.log('create factory', createdFactoryCard);
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
             var factoryDisplayCard = new FactoryCard();
             this.factory.push(factoryDisplayCard);
-            console.log(this.factory);
         }
         if (this.factory.length < 6) {
             createFactoryCard();
@@ -110,8 +126,6 @@ class GameBoard {
     displayFactoryCards(array) {
         for (var index = 0; index < array.length; index++) {
             var inputValue = array[index]['input'];
-            console.log(inputValue);
-
             var newFactoryCard = $("<div>", {
                 class: 'factoryCard',
                 why: inputValue,
@@ -119,11 +133,23 @@ class GameBoard {
                 text: `Input: ${array[index]['input']}
                 output: ${array[index]['output']}`,
             });
-            console.log(array[index]['input'])
             $(".factoryContainer").append(newFactoryCard);
         }
     };
-    // render(){
-
-    // }
+    render(){
+        // debugger;
+        for(var cardCreationPosition = 0; cardCreationPosition < this.factory.length; cardCreationPosition++){
+            var factoryBoardCard = $('<div>',{
+                class: "factoryCard"
+            });
+            $('.factoryContainer').append(factoryBoardCard);
+        }
+        for(var cardCreationPosition = 0; cardCreationPosition < this.city.length; cardCreationPosition++){
+            var cityBoardCard = $('<div>',{
+                class: "cityCard",
+                text: '1'
+            });
+            $('.cityContainer').append(cityBoardCard);
+        }
+    }
 } 

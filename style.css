@@ -107,7 +107,7 @@ body {
     opacity: 0.6;
 }
 
-.cityCard {
+.cityCard, .factoryCard {
     height: 60%;
     width: 12%;
     margin: 2px 2px;
@@ -125,9 +125,12 @@ body {
     align-items: center;
 }
 
-.newSpice:hover {
+.newSpice:hover,
+.cityCard:hover,
+.factoryCard:hover {
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 a {
     color: white;
@@ -139,4 +142,15 @@ a {
     justify-content: space-evenly;
     align-items: center;
     color: black;
+}
+
+.cityCard:hover,
+.factoryCard:hover {
+    font-size: 1em;
+}
+
+.cityCard,
+.factoryCard {
+    font-size: 0;
+
 }
