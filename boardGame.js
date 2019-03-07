@@ -26,12 +26,12 @@ class GameBoard {
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
             var factoryDisplayCard = new FactoryCard();
             this.factory.push(factoryDisplayCard);
+            var factoryBoardCard = $('<div>',{
+                class: "factoryCard",
+                val: factoryDisplayCard
+            });
+            $('.factoryContainer').append(factoryBoardCard);
         }
-        var factoryBoardCard = $('<div>',{
-            class: "factoryCard",
-            val: factoryDisplayCard
-        });
-        $('.factoryContainer').append(factoryBoardCard);
         if (this.factory.length < 6) {
             createFactoryCard();
         };
