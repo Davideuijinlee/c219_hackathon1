@@ -1,5 +1,5 @@
 class Player {
-    constructor(name, playernumber) {
+    constructor(name) {
         this.name = name;
         this.spice = {
             yellow: 1,
@@ -7,49 +7,38 @@ class Player {
             green: 0,
             brown: 0,
         };
-
+        this.action = false;
         this.factory = [];
         this.city = [];
         this.points = 0;
-        this.playernumber = playernumber; //used to append cards to the correct container
-
+        this.playerNumber = 0; //to make their stuff go to the right container
+        this.checkPlayerNumber(this.name);
         this.createStartingCards();
-        this.createStartingSpice(); //creates the divs
-        this.showSpiceValue(); //pushes the value to the divs
+        this.showSpiceValue();
+        // this.createVisualSpice(this.spice);
     };
 
-    //ties in with creatingStartingSpice
-    createSpice(color) {
-        var newSpice = $('<div>').addClass('newSpice').css({
-            'background-color': color
-        });
-        newSpice.addClass(color);
-        if (this.playernumber === 1) {
-            $('.playerone').append(newSpice);
-        } else if (this.playernumber === 2) {
-            $('.playertwo').append(newSpice);
+    //trying to make sure that their stuff goes to the right place
+    checkPlayerNumber(name) {
+        var playerClass = name;
+        if (this.playerNumber < 1) {
+            $(".playerone").addClass(playerClass);
+            this.playerNumber++;
+        } else if (this.playerNumber < 2) {
+            $(".playertwo").addClass(playerClass);
         }
-    };
-
-    //makes the spice colors pop up on the DOM
-    createStartingSpice() {
-        this.createSpice('yellow');
-        this.createSpice('red');
-        this.createSpice('green');
-        this.createSpice('brown');
     }
 
     //currently appends to both stat cards, will have to change
     showSpiceValue() {
         var yellow = this.spice.yellow;
+        $(".yellow playerClass").text(yellow);
         var red = this.spice.red;
+        $(".red playerClass").text(red);
         var green = this.spice.green;
+        $(".green playerClass").text(green);
         var brown = this.spice.brown;
-
-        $(".yellow").text(yellow);
-        $(".red").text(red);
-        $(".green").text(green);
-        $(".brown").text(brown);
+        $(".brown playerClass").text(brown);
     }
 
     createStartingCards() {
