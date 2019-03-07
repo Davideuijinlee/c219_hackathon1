@@ -11,6 +11,11 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <script type="text/javascript" src="card.js"></script>
     <script type="text/javascript" src="boardGame.js"></script>
     <script type="text/javascript" src="currentplayer.js"></script>
@@ -23,8 +28,8 @@
             <h1 class="playertitle">Player One</h1>
             <div class="caravancard playerone"></div>
             <div class="modalcontainer">
-                <div class="citymodal">Cities</div>
-                <div class="conversioncardmodal">Conversion Cards</div>
+                <div class="citymodal"><a href="#p1city" rel="modal:open">Cities</a></div>
+                <div class="conversioncardmodal"><a href="#p1factory" rel="modal:open">Conversion Cards</a></div>
             </div>
             <div class="cityContainer"></div>
         </div>
@@ -32,12 +37,37 @@
             <h1 class="playertitle">Player Two</h1>
             <div class="caravancard playertwo"></div>
             <div class="modalcontainer">
-                <div class="citymodal">Cities</div>
-                <div class="conversioncardmodal">Conversion Cards</div>
+                <div class="citymodal"><a href="#p2city" rel="modal:open">Cities</a></div>
+                <div class="conversioncardmodal"><a href="#p1factory" rel="modal:open">Conversion Cards</a></div>
             </div>
             <div class="factoryContainer"></div>
         </div>
     </div>
+
+    <!-- player one city modal -->
+    <div id="p1city" class="modal playerone cities">
+        <p>This is where Player One's cities will be displayed</p>
+        <a href="#" rel="modal:close">Close</a>
+    </div>
+
+    <!-- player one factory modal -->
+    <div id="p1factory" class="modal playerone factories">
+        <p>This is where Player One's factories will be displayed</p>
+        <a href="#" rel="modal:close">Close</a>
+    </div>
+
+    <!-- player two city modal -->
+    <div id="p2city" class="modal playerone cities">
+        <p>This is where Player Two's cities will be displayed</p>
+        <a href="#" rel="modal:close">Close</a>
+    </div>
+
+    <!-- player two factory modal -->
+    <div id="p2factory" class="modal playerone factories">
+        <p>This is where Player Two's factories will be displayed</p>
+        <a href="#" rel="modal:close">Close</a>
+    </div>
+
 </body>
 
 </html>

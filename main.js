@@ -1,12 +1,12 @@
 $(document).ready(startGame);
 var gameboard;
 
-function startGame(){
+function startGame() {
     gameboard = new GameBoard;
 }
 
 // function clickInput(){
-    
+
 // }
 
 var players = [];
@@ -85,3 +85,6 @@ players.push(new Player('Player 2'));
 //     }
 // }];
 
+$("#fade").modal({
+    fadeDuration: 100
+  });
