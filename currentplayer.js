@@ -1,7 +1,12 @@
 class Player {
     constructor(name) {
-        this.name = name; 
-        this.spice = ['yellow'];
+        this.name = name;
+        this.spice = {
+            yellow: 1,
+            red: 0,
+            green: 0,
+            brown: 0,
+        };
         this.factory = [];
         this.city = [];
         this.points = 0;
@@ -46,5 +51,31 @@ class Player {
             var currentColor = this.domSpice[index];
             this.createSpice(currentColor);
         }
+    }
+
+    buy(cost) {
+        if (this.checkCost(cost, this.spice)) {
+            console.log('buying dat shit');
+            for (var key in cost) {
+                this.changeSpice(key, cost[key] * -1);
+            }
+        } else {
+            console.log('tai gui');
+        }
+    }
+
+    changeSpice(color, amount) {
+        this.spice[color] += amount;
+    }
+
+    checkCost(cost, spice) {
+        
+        this.spice = spice;
+        for (var key in cost) {
+            if (cost[key] > this.spice[key]) {
+                return false;
+            }
+        }
+        return true
     }
 }

@@ -104,4 +104,5 @@ class GameBoard {
             $(".factoryContainer").append(newFactoryCard);
         }
     };
+
 };
