@@ -2,10 +2,9 @@ body {
     margin: 0;
     height: 100vh;
     background-color: #f3f3f3;
-    color: white;
+    color: rgb(236, 234, 228);
     font-family: 'Metamorphous', Arial, sans-serif;
     background:
-        /* top, transparent red, faked with gradient */
         linear-gradient(rgba(170, 170, 170, 0.1),
         rgba(170, 170, 170, 0.1)),
         url('/images/market.jpg');
@@ -23,7 +22,6 @@ body {
     flex-direction: column;
     align-items: center;
     width: 50%;
-    /* border: 1px solid black; */
 }
 
 .firstplayer {
@@ -49,7 +47,10 @@ body {
     align-items: center;
     text-align: center;
     color: white;
-    /* border: 1px solid black; */
+    font-size: 3rem;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+        0px 8px 13px rgba(0, 0, 0, 0.1),
+        0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
 .modalcontainer {
@@ -120,4 +121,11 @@ body {
     width: 20%;
     margin: 2px 2px;
     font: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newSpice:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }

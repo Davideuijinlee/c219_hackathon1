@@ -10,16 +10,22 @@ class Player {
         this.factory = [];
         this.city = [];
         this.points = 0;
+        $(".caravancard").addClass(this.name);
         this.createStartingCards();
         this.showSpiceValue();
         // this.createVisualSpice(this.spice);
     };
 
-    //how to show value?
+    //currently appends to both stat cards, will have to change
     showSpiceValue() {
         var yellow = this.spice.yellow;
-        $(".yellow").text(yellow);
-        console.log('value', yellow)
+        $(".yellow ").text(yellow);
+        var red = this.spice.red;
+        $(".red").text(red);
+        var green = this.spice.green;
+        $(".green").text(green);
+        var brown = this.spice.brown;
+        $(".brown").text(brown);
     }
 
     createStartingCards() {

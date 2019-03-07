@@ -13,12 +13,16 @@ class GameBoard {
         this.createStartingSpice();
     }
 
+    //ties in with creatingStartingSpice
     createSpice(color) {
-        var newSpice = $('<div>').addClass('newSpice').css({'background-color': color});
+        var newSpice = $('<div>').addClass('newSpice').css({
+            'background-color': color
+        });
         newSpice.addClass(color);
         $('.caravancard').append(newSpice);
     };
 
+    //makes the spice colors pop up on the DOM
     createStartingSpice() {
         this.createSpice('yellow');
         this.createSpice('red');
@@ -26,40 +30,17 @@ class GameBoard {
         this.createSpice('brown');
     }
 
-    handleClick(){
+    handleClick() {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
         console.log(this.callbacks);
     }
-    callBack(event){
+
+    callBack(event) {
         var testVar = $(event.currentTarget)
         console.log(event);
     }
-    // createFactoryCard() {
-    //     // debugger;
-    //     // console.log('create factory', createdFactoryCard);
-    //     for (var factoryIndex = 0; factoryIndex < 6; factoryIndex++) {
-    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
-    //         var currentFactoryCard = new FactoryCard(input, output);
-    //         this.factory.push(currentFactoryCard);
-    //         console.log(this.factory);
-    //     }
-    //     if (this.factory.length < 6) {
-    //         createFactoryCard();
-    //     }
-    //     // return createFactoryCard;
-    // }
-    // createCityCard() {
-    //     for (var cityIndex = 0; cityIndex < 5; cityIndex++) {
-    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
-    //         var currentCityCard = new CityCard(input, output);
-    //         this.city.push(currentCityCard);
-    //         console.log(this.city)
-    //     }
-    //     if (this.city.length < 5) {
-    //         createCityCard();
-    //     }
-    // }
+
     moveCard() {
         // console.log('move card', moveCard());
         // for (var i = 0; i < players.length; i++) {
@@ -69,6 +50,7 @@ class GameBoard {
         //     }
         // }
     }
+
     winCondition() {
         // var checkForPoints = false;
 
@@ -109,6 +91,7 @@ class GameBoard {
     //player with highest value wins
 
     //check if what the players are offering matches the city card input
+    
     doSpice() {
         // console.log('doSpice', doSpice());
     }
@@ -126,10 +109,10 @@ class GameBoard {
 
     displayFactoryCards(array) {
         for (var index = 0; index < array.length; index++) {
-            var inputValue =array[index]['input'];
+            var inputValue = array[index]['input'];
             console.log(inputValue);
-           
-            var newFactoryCard = $("<div>",{
+
+            var newFactoryCard = $("<div>", {
                 class: 'factoryCard',
                 why: inputValue,
                 output: `${array[index]['output']}`,
