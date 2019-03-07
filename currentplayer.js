@@ -1,8 +1,10 @@
 class Player {
-    constructor() {
+    constructor(name) {
+        this.name = name; 
         this.spice = ['yellow'];
         this.factory = [];
         this.city = [];
+        this.points = 0;
         this.createStartingCards();
         this.createVisualSpice(this.spice);
         console.log()

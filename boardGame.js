@@ -35,9 +35,36 @@ class GameBoard {
     }
     moveCard(){
         // console.log('move card', moveCard());
+        // for (var i = 0; i < players.length; i++) {
+        //     if (players[i].city.length === 2) {
+        //         checkForPoints = true
+        //         break;
+        //     }
+        // }
     }
     winCondition(){
+        // var checkForPoints = false;
         // console.log('win condition', winCondition());
+        //check player city storage
+        // if(Player.city.length === 1){
+        //     //games ends
+        //     //check values of cities
+
+        // }
+            var highest = 0;
+            for (var i = 0; i < players.length; i++) {
+                if (highest < players[i].points) {
+                    highest = players[i].points;
+                }
+            }
+            console.log("The highest points is ", highest);
+        
+
+        //if there is player with max cities end game
+        //turn off click handlers
+        //create an alert
+        
+        //player with highest value wins
     }
     doSpice(){
         // console.log('doSpice', doSpice());

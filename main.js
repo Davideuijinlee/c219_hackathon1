@@ -2,8 +2,9 @@
 
 
 
-
-
+var players = [];
+players.push(new Player('Player 1'));
+players.push(new Player('Player 2'));
 
 
 var cityCardArray = [{
@@ -12,11 +13,11 @@ var cityCardArray = [{
 },
 {
     'price': ['yellow', 'red'],
-    'value': 7 
+    'value': 4 
 },
 {
     'price': ['red', 'red'],
-    'value': 8 
+    'value': 10
 }];
 
 var factoryCardArray = [{
@@ -29,5 +30,5 @@ var factoryCardArray = [{
 },
 {
     'input': ['red'],
-    'input': ['yellow', 'yellow', 'red'] 
+    'output': ['yellow', 'yellow', 'red'] 
 }];
