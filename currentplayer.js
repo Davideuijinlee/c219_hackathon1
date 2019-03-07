@@ -10,28 +10,40 @@ class Player {
         this.factory = [];
         this.city = [];
         this.points = 0;
-        $(".caravancard").addClass(this.name);
+        this.playerNumber = 0; //to make their stuff go to the right container
+        this.checkPlayerNumber(this.name);
         this.createStartingCards();
         this.showSpiceValue();
         // this.createVisualSpice(this.spice);
     };
 
+    //trying to make sure that their stuff goes to the right place
+    checkPlayerNumber(name) {
+        var playerClass = name;
+        if (this.playerNumber < 1) {
+            $(".playerone").addClass(playerClass);
+            this.playerNumber++;
+        } else if (this.playerNumber < 2) {
+            $(".playertwo").addClass(playerClass);
+        }
+    }
+
     //currently appends to both stat cards, will have to change
     showSpiceValue() {
         var yellow = this.spice.yellow;
-        $(".yellow ").text(yellow);
+        $(".yellow playerClass").text(yellow);
         var red = this.spice.red;
-        $(".red").text(red);
+        $(".red playerClass").text(red);
         var green = this.spice.green;
-        $(".green").text(green);
+        $(".green playerClass").text(green);
         var brown = this.spice.brown;
-        $(".brown").text(brown);
+        $(".brown playerClass").text(brown);
     }
 
     createStartingCards() {
         //gives you the starting two yellow spice card
         var yellowFactoryCard = {
-            'input':  {
+            'input': {
                 yellow: 0,
                 red: 0,
                 green: 0,
