@@ -5,9 +5,11 @@ class CityCard{
             yellow : Math.floor(Math.random() * 4),
             red : Math.floor(Math.random() * 4),
             green : null,
-            brown : null,
+            brown : null
         }
         this.value = Math.floor(Math.random() * 5)+ 1;
+        var nestedCityObject = Object.assign(this.price, this.value);
+        console.log(nestedCityObject);
     }
 }
 
@@ -32,5 +34,7 @@ class FactoryCard{
             brown : null,
         }
         console.log("factory card created")
+        var nestedFactoryObject = Object.assign(this.input, this.value, this.output);
+        console.log(nestedFactoryObject);
     }
 }

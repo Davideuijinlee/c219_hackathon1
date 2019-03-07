@@ -3,67 +3,63 @@ class GameBoard {
         this.city = []; //length 5
         this.factory = []; //length 6
         this.displayArea = $('body'); //change later
-        this.displayCityCards(cityCardArray);
-        this.displayFactoryCards(factoryCardArray);
+        // this.displayCityCards(cityCardArray);
+        // this.displayFactoryCards(factoryCardArray);
         // this.callbacks = {
-        //     click: clickCallBack
+        // click: clickCallBack
         // }
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
     }
+
     handleClick(){
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
         console.log(this.callbacks);
     }
     callBack(event){
-        var testVar = $(event.currentTarget)
+        var testVar = $(event.currentTarget);
         console.log(event);
     }
-    // createFactoryCard() {
-    //     // debugger;
-    //     // console.log('create factory', createdFactoryCard);
-    //     for (var factoryIndex = 0; factoryIndex < 6; factoryIndex++) {
-    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
-    //         var currentFactoryCard = new FactoryCard(input, output);
-    //         this.factory.push(currentFactoryCard);
-    //         console.log(this.factory);
-    //     }
-    //     if (this.factory.length < 6) {
-    //         createFactoryCard();
-    //     }
-    //     // return createFactoryCard;
-    // }
-    // createCityCard() {
-    //     for (var cityIndex = 0; cityIndex < 5; cityIndex++) {
-    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
-    //         var currentCityCard = new CityCard(input, output);
-    //         this.city.push(currentCityCard);
-    //         console.log(this.city)
-    //     }
-    //     if (this.city.length < 5) {
-    //         createCityCard();
-    //     }
-    // }
-    moveCard() {
-        // console.log('move card', moveCard());
-        // for (var i = 0; i < players.length; i++) {
-        //     if (players[i].city.length === 2) {
-        //         checkForPoints = true
-        //         break;
-        //     }
-        // }
+    createFactoryCard() {
+        // console.log('create factory', createdFactoryCard);
+        for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
+            var factoryDisplayCard = new FactoryCard();
+            this.factory.push(factoryDisplayCard);
+            console.log(this.factory);
+        }
+        if (this.factory.length < 6) {
+            createFactoryCard();
+        };
     }
+
+    createCityCard() {
+        for (var cityIndex = 0; this.city.length < 5; cityIndex++) {
+            var cityDisplayCard = new CityCard();
+            this.city.push(cityDisplayCard);
+        }
+        if (this.city.length < 5) {
+            createCityCard();
+        }
+    }
+
+    // moveCard() {
+    //     // console.log('move card', moveCard());
+    //     // for (var i = 0; i < players.length; i++) {
+    //     //     if (players[i].city.length === 2) {
+    //     //         checkForPoints = true
+    //     //         break;
+    //     //     }
+    //     // }
+    // }
     winCondition() {
-        // var checkForPoints = false;
-
-        // console.log('win condition', winCondition());
-        //check player city storage
-        // if(Player.city.length === 1){
-        //     //games ends
-        //     //check values of cities
-
-        // }
+    //     // var checkForPoints = false;
+    //     // console.log('win condition', winCondition());
+    //     //check player city storage
+    //     // if(Player.city.length === 1){
+    //     //     //games ends
+    //     //     //check values of cities
+    //     // }
         var playerPoints = [];
         playerPoints.push(players[0].points);
         playerPoints.push(players[1].points);
@@ -76,7 +72,7 @@ class GameBoard {
 
         var playerPointsCombinedArray = $.map(players, function (n, i) {
             return [n, playerPoints[i]];
-        })
+        });
 
         // console.log(playerPointsCombinedArray);
         // console.log("The highest points is ", highest);
@@ -94,9 +90,9 @@ class GameBoard {
     //player with highest value wins
 
     //check if what the players are offering matches the city card input
-    doSpice() {
-        // console.log('doSpice', doSpice());
-    }
+    // doSpice() {
+    //     // console.log('doSpice', doSpice());
+    // }
 
     //displays the city cards onto the dom
     //when to call this? after buying city
@@ -125,5 +121,7 @@ class GameBoard {
             $(".factoryContainer").append(newFactoryCard);
         }
     };
+    // render(){
 
-};
+    // }
+} 
