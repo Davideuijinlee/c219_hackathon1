@@ -1,5 +1,5 @@
 class Player {
-    constructor(name) {
+    constructor(name, playernumber) {
         this.name = name;
         this.playernumber = playernumber; //used to append cards to the correct container
         this.spice = {
@@ -79,16 +79,26 @@ class Player {
         }
     }
 
+    //makes the spice colors pop up on the DOM
+    createStartingSpice() {
+        this.createSpice('yellow');
+        this.createSpice('red');
+        this.createSpice('green');
+        this.createSpice('brown');
+
+    }
+
     //currently appends to both stat cards, will have to change
     showSpiceValue() {
         var yellow = this.spice.yellow;
-        $(".yellow playerClass").text(yellow);
         var red = this.spice.red;
-        $(".red playerClass").text(red);
         var green = this.spice.green;
-        $(".green playerClass").text(green);
         var brown = this.spice.brown;
-        $(".brown playerClass").text(brown);
+
+        $(".yellow").text(yellow);
+        $(".red").text(red);
+        $(".green").text(green);
+        $(".brown").text(brown);
     }
 
     createStartingCards() {
@@ -123,7 +133,7 @@ class Player {
         }
 
         this.factory.push(yellowFactoryCard, conversionFactoryCard);
-        
+
 
     };
 
