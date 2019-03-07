@@ -47,6 +47,11 @@ class GameBoard {
             var factoryDisplayCard = new FactoryCard();
             this.factory.push(factoryDisplayCard);
         }
+        var factoryBoardCard = $('<div>',{
+            class: "factoryCard",
+            val: factoryDisplayCard
+        });
+        $('.factoryContainer').append(factoryBoardCard);
         if (this.factory.length < 6) {
             createFactoryCard();
         };
@@ -56,6 +61,11 @@ class GameBoard {
         for (var cityIndex = 0; this.city.length < 5; cityIndex++) {
             var cityDisplayCard = new CityCard();
             this.city.push(cityDisplayCard);
+            var cityBoardCard = $('<div>',{
+                class: "cityCard",
+                val: cityDisplayCard
+            });
+            $('.cityContainer').append(cityBoardCard);
         }
         if (this.city.length < 5) {
             createCityCard();
