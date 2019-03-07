@@ -5,34 +5,46 @@ class GameBoard {
         this.displayArea = $('body'); //change later
         this.displayCityCards(cityCardArray);
         this.displayFactoryCards(factoryCardArray);
+        // this.callbacks = {
+        //     click: clickCallBack
+        // }
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClick();
     }
-    createFactoryCard() {
-        // debugger;
-        // console.log('create factory', createdFactoryCard);
-        for (var factoryIndex = 0; factoryIndex < 6; factoryIndex++) {
-            var input = this.randomNumber = Math.floor((Math.random() * (4)));
-            var output = this.randomNumber = Math.floor((Math.random() * (4)));
-            var currentFactoryCard = new FactoryCard(input, output);
-            this.factory.push(currentFactoryCard);
-            console.log(this.factory);
-        }
-        if (this.factory.length < 6) {
-            createFactoryCard();
-        }
-        // return createFactoryCard;
+    handleClick(){
+        $('#clickMe').on('click', '.cityCard', this.callBack);
+        $('#clickMe').on('click', '.factoryCard', this.callBack);
+        console.log(this.callbacks);
     }
-    createCityCard() {
-        for (var cityIndex = 0; cityIndex < 5; cityIndex++) {
-            var input = this.randomNumber = Math.floor((Math.random() * (4)));
-            var output = this.randomNumber = Math.floor((Math.random() * (10)));
-            var currentCityCard = new CityCard(input, output);
-            this.city.push(currentCityCard);
-            console.log(this.city)
-        }
-        if (this.city.length < 5) {
-            createCityCard();
-        }
+    callBack(event){
+        var testVar = $(event.currentTarget)
+        console.log(event);
     }
+    // createFactoryCard() {
+    //     // debugger;
+    //     // console.log('create factory', createdFactoryCard);
+    //     for (var factoryIndex = 0; factoryIndex < 6; factoryIndex++) {
+    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
+    //         var currentFactoryCard = new FactoryCard(input, output);
+    //         this.factory.push(currentFactoryCard);
+    //         console.log(this.factory);
+    //     }
+    //     if (this.factory.length < 6) {
+    //         createFactoryCard();
+    //     }
+    //     // return createFactoryCard;
+    // }
+    // createCityCard() {
+    //     for (var cityIndex = 0; cityIndex < 5; cityIndex++) {
+    //         var input = this.randomNumber = Math.floor((Math.random() * (4)));
+    //         var currentCityCard = new CityCard(input, output);
+    //         this.city.push(currentCityCard);
+    //         console.log(this.city)
+    //     }
+    //     if (this.city.length < 5) {
+    //         createCityCard();
+    //     }
+    // }
     moveCard() {
         // console.log('move card', moveCard());
         // for (var i = 0; i < players.length; i++) {
@@ -99,8 +111,17 @@ class GameBoard {
 
     displayFactoryCards(array) {
         for (var index = 0; index < array.length; index++) {
-            var newFactoryCard = $("<div>").addClass('cityCard').text(`Input: ${array[index]['input']}
-            Output: ${array[index]['output']}`);
+            var inputValue =array[index]['input'];
+            console.log(inputValue);
+           
+            var newFactoryCard = $("<div>",{
+                class: 'factoryCard',
+                why: inputValue,
+                output: `${array[index]['output']}`,
+                text: `Input: ${array[index]['input']}
+                output: ${array[index]['output']}`,
+            });
+            console.log(array[index]['input'])
             $(".factoryContainer").append(newFactoryCard);
         }
     };

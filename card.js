@@ -1,22 +1,36 @@
 
 class CityCard{
-    constructor(price, pointValue ){
-        this.pointValue = pointValue;
-        this.price = price;
-        this.isOwned= false;
-        console.log("city card created");
+    constructor(){
+        this.price = {
+            yellow : Math.floor(Math.random() * 4),
+            red : Math.floor(Math.random() * 4),
+            green : null,
+            brown : null,
+        }
+        this.value = Math.floor(Math.random() * 5)+ 1;
     }
-
 }
 
 class FactoryCard{
-    constructor(input, output){
-        this.input = input;
-        this.output = output;
-        this.isOwned = false;
+    constructor(){
+        this.input = {
+            yellow : Math.floor(Math.random() * 4),
+            red : Math.floor(Math.random() * 4),
+            green : null,
+            brown : null,
+        }
+        this.value = {
+            yellow : 0,
+            red : 0,
+            green : 0,
+            brown : 0,
+        }
+        this.output= {
+            yellow : Math.floor(Math.random() * 4),
+            red : Math.floor(Math.random() * 4),
+            green : null,
+            brown : null,
+        }
         console.log("factory card created")
-    }
-    convertSpice(input,output){
-        console.log("convert spice called")
     }
 }
