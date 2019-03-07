@@ -86,7 +86,7 @@ class GameBoard {
 
     displayFactoryCards(array) {
         for (var index = 0; index < array.length; index++) {
-            var newFactoryCard = $("<div>").addClass('cityCard').text(`Input: ${array[index]['input']}
+            var newFactoryCard = $("<div>").addClass('factoryCard').text(`Input: ${array[index]['input']}
             Output: ${array[index]['output']}`);
             $(".factoryContainer").append(newFactoryCard);
         }

@@ -83,10 +83,23 @@ body {
     color: white;
 }
 
-.cityCard {
+.cityCard, .factoryCard {
     height: 60%;
     width: 12%;
     margin: 2px 2px;
     background-color: black;
     color: white;
+}
+
+.cityCard {
+    background-image: url('/images/cityback.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.factoryCard {
+    background-image: url('/images/factoryback.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
