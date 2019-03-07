@@ -1,8 +1,10 @@
 $(document).ready(startGame);
 var gameboard;
+var city = [];
 
 function startGame() {
-    gameboard = new GameBoard;
+    gameboard = new GameBoard();
+    city = []
 }
 
 // function clickInput(){

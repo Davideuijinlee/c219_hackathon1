@@ -8,8 +8,15 @@ class CityCard{
             brown : null
         }
         this.value = Math.floor(Math.random() * 5)+ 1;
-        var nestedCityObject = Object.assign(this.price, this.value);
+        var nestedCityObject = Object.assign(this.price, this.value);   
         console.log(nestedCityObject);
+    }
+    render(){
+        var factoryBoardCard = $('<div>',{
+            class: "factoryCard",
+            text: '1'
+        });
+        $('.factoryContainer').append(factoryBoardCard);
     }
 }
 
