@@ -12,6 +12,8 @@ function startGame() {
     players.push(player2);
 }
 
+
+
 // function clickInput(){
 
 // }

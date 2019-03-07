@@ -154,3 +154,10 @@ a {
     font-size: 0;
 
 }
+
+.modalCard {
+    height: 150px;
+    width: 100px;
+    background-color: black;
+    border-radius: 10px;
+}

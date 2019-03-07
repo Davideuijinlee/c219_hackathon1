@@ -12,24 +12,6 @@ class GameBoard {
         this.handleClick();
     }
 
-    //ties in with creatingStartingSpice
-    createSpice(color) {
-        var newSpice = $('<div>').addClass('newSpice').css({
-            'background-color': color
-        });
-        newSpice.addClass(color);
-        $('.caravancard').append(newSpice);
-    };
-
-    //makes the spice colors pop up on the DOM
-    createStartingSpice() {
-        this.createSpice('yellow');
-        this.createSpice('red');
-        this.createSpice('green');
-        this.createSpice('brown');
-
-    }
-
     handleClick() {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
