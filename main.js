@@ -10,8 +10,8 @@ function startGame() {
 // }
 
 var players = [];
-players.push(new Player('Player 1'));
-players.push(new Player('Player 2'));
+players.push(new Player('Player 1', 1));
+players.push(new Player('Player 2', 2));
 
 //check to see if we should delete
 // var cityCardArray = [{
@@ -84,7 +84,3 @@ players.push(new Player('Player 2'));
 //         brown: 0,
 //     }
 // }];
-
-$("#fade").modal({
-    fadeDuration: 100
-  });

@@ -67,9 +67,12 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-shrink: 1;
     height: 70%;
     width: 30%;
     border-radius: 10px;
+    background-size: cover;
+    background-position: center;
     color: rgba(255, 255, 255, 0)
 }
 
@@ -83,15 +86,11 @@ body {
 }
 
 .citymodal {
-    background-color: #afb2b7;
     background-image: url('images/cityback.png');
-    background-size: cover;
 }
 
 .conversioncardmodal {
-    background-color: #afb2b7;
     background-image: url('images/factoryback.png');
-    background-size: cover;
 }
 
 .cityContainer,
@@ -136,5 +135,8 @@ a {
 }
 
 .modal {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     color: black;
 }
