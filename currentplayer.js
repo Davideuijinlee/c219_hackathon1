@@ -39,9 +39,9 @@ class Player {
     //adds the visual indicator
     //can call in other places? after you add/remove spices?
     createVisualSpice(array) {
-        this.spiceArray = array;
-        for (var index = 0; index < this.spiceArray.length; index++) {
-            var currentColor = this.spiceArray[index];
+        this.domSpice = array;
+        for (var index = 0; index < this.domSpice.length; index++) {
+            var currentColor = this.domSpice[index];
             this.createSpice(currentColor);
         }
     }

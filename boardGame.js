@@ -4,6 +4,7 @@ class GameBoard {
         this.factory = []; //length 6
         this.displayArea = $('body'); //change later
         this.displayCityCards(cityCardArray);
+        this.displayFactoryCards(factoryCardArray);
     }
     createFactoryCard() {
         // debugger;
@@ -52,6 +53,14 @@ class GameBoard {
             var newCityCard = $("<div>").addClass('cityCard').text(`Cost: ${array[index]['price']}
             Value: ${array[index]['value']}`);
             $(".cityContainer").append(newCityCard);
+        }
+    };
+
+    displayFactoryCards(array) {
+        for (var index = 0; index < array.length; index++) {
+            var newFactoryCard = $("<div>").addClass('cityCard').text(`Input: ${array[index]['input']}
+            Output: ${array[index]['output']}`);
+            $(".factoryContainer").append(newFactoryCard);
         }
     };
 }

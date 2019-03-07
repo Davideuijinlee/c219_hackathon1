@@ -31,6 +31,3 @@ var factoryCardArray = [{
     'input': ['red'],
     'output': ['yellow', 'yellow', 'red'] 
 }];
-
-var test = new GameBoard();
-test.displayCityCards(cityCardArray);
