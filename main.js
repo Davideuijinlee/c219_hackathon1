@@ -6,7 +6,6 @@ var players = [];
 players.push(new Player('Player 1'));
 players.push(new Player('Player 2'));
 
-
 var cityCardArray = [{
     'price': ['yellow', 'yellow'],
     'value': 5

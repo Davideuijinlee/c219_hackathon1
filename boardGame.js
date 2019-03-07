@@ -42,7 +42,7 @@ class GameBoard {
         //     }
         // }
     }
-    winCondition(){
+    winCondition() {
         // var checkForPoints = false;
 
         // console.log('win condition', winCondition());
@@ -52,21 +52,34 @@ class GameBoard {
         //     //check values of cities
 
         // }
-            var highest = 0;
-            for (var i = 0; i < players.length; i++) {
-                if (highest < players[i].points) {
-                    highest = players[i].points;
-                }
+        var playerPoints = [];
+        playerPoints.push(players[0].points);
+        playerPoints.push(players[1].points);
+        var highest = 0;
+        for (var i = 0; i < players.length; i++) {
+            if (highest < players[i].points) {
+                highest = players[i].points;
             }
-            console.log("The highest points is ", highest);
-        
+        }
 
-        //if there is player with max cities end game
-        //turn off click handlers
-        //create an alert
-        
-        //player with highest value wins
+        var playerPointsCombinedArray = $.map(players, function (n, i) {
+            return [n, playerPoints[i]];
+        })
+
+        // console.log(playerPointsCombinedArray);
+        // console.log("The highest points is ", highest);
+        for (i = 0; i < playerPointsCombinedArray.length; i++) {
+            if (highest === playerPointsCombinedArray[i]) {
+                console.log(playerPointsCombinedArray[i - 1].name, "wins!");
+            }
+        }
     }
+
+    //if there is player with max cities end game
+    //turn off click handlers
+    //create an alert
+
+    //player with highest value wins
 
     //check if what the players are offering matches the city card input
     doSpice() {
@@ -91,4 +104,4 @@ class GameBoard {
             $(".factoryContainer").append(newFactoryCard);
         }
     };
-}
+};
