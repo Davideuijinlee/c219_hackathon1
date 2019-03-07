@@ -38,6 +38,8 @@ class GameBoard {
     }
     callBack(event){
         var testVar = $(event.currentTarget);
+        console.log('clicked');
+
     }
     createFactoryCard() {
         // console.log('create factory', createdFactoryCard);
@@ -140,7 +142,8 @@ class GameBoard {
         // debugger;
         for(var cardCreationPosition = 0; cardCreationPosition < this.factory.length; cardCreationPosition++){
             var factoryBoardCard = $('<div>',{
-                class: "factoryCard"
+                class: "factoryCard",
+                text: '1'
             });
             $('.factoryContainer').append(factoryBoardCard);
         }
