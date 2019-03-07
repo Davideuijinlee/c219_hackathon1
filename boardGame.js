@@ -10,9 +10,28 @@ class GameBoard {
         // }
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
+        this.createStartingSpice();
     }
 
-    handleClick(){
+
+    //ties in with creatingStartingSpice
+    createSpice(color) {
+        var newSpice = $('<div>').addClass('newSpice').css({
+            'background-color': color
+        });
+        newSpice.addClass(color);
+        $('.caravancard').append(newSpice);
+    };
+
+    //makes the spice colors pop up on the DOM
+    createStartingSpice() {
+        this.createSpice('yellow');
+        this.createSpice('red');
+        this.createSpice('green');
+        this.createSpice('brown');
+    }
+
+    handleClick() {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
         console.log(this.callbacks);
@@ -94,6 +113,7 @@ class GameBoard {
     //     // console.log('doSpice', doSpice());
     // }
 
+
     //displays the city cards onto the dom
     //when to call this? after buying city
     //clear DOM before adding if adding after buying?
@@ -107,10 +127,10 @@ class GameBoard {
 
     displayFactoryCards(array) {
         for (var index = 0; index < array.length; index++) {
-            var inputValue =array[index]['input'];
+            var inputValue = array[index]['input'];
             console.log(inputValue);
-           
-            var newFactoryCard = $("<div>",{
+
+            var newFactoryCard = $("<div>", {
                 class: 'factoryCard',
                 why: inputValue,
                 output: `${array[index]['output']}`,

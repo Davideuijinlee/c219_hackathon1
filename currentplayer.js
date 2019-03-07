@@ -10,16 +10,51 @@ class Player {
         this.factory = [];
         this.city = [];
         this.points = 0;
+        this.playerNumber = 0; //to make their stuff go to the right container
+        this.checkPlayerNumber(this.name);
         this.createStartingCards();
-        this.createVisualSpice(this.spice);
-        console.log()
+        this.showSpiceValue();
+        // this.createVisualSpice(this.spice);
     };
+
+    //trying to make sure that their stuff goes to the right place
+    checkPlayerNumber(name) {
+        var playerClass = name;
+        if (this.playerNumber < 1) {
+            $(".playerone").addClass(playerClass);
+            this.playerNumber++;
+        } else if (this.playerNumber < 2) {
+            $(".playertwo").addClass(playerClass);
+        }
+    }
+
+    //currently appends to both stat cards, will have to change
+    showSpiceValue() {
+        var yellow = this.spice.yellow;
+        $(".yellow playerClass").text(yellow);
+        var red = this.spice.red;
+        $(".red playerClass").text(red);
+        var green = this.spice.green;
+        $(".green playerClass").text(green);
+        var brown = this.spice.brown;
+        $(".brown playerClass").text(brown);
+    }
 
     createStartingCards() {
         //gives you the starting two yellow spice card
         var yellowFactoryCard = {
-            'input': [],
-            'output': ['yellow', 'yellow']
+            'input': {
+                yellow: 0,
+                red: 0,
+                green: 0,
+                brown: 0,
+            },
+            'output': {
+                yellow: 2,
+                red: 0,
+                green: 0,
+                brown: 0,
+            }
         };
         //gives you the starting conversion spice card
         var conversionFactoryCard = {
@@ -29,29 +64,6 @@ class Player {
         //pushes them to the factory array
         this.factory.push(yellowFactoryCard, conversionFactoryCard);
     };
-
-    //adds a visual indicator for spice to the DOM
-    //currently only adds it to one caravan card, need to figure out a way to add it to the specific player's caravan card
-    //eventually add active class, then change append to active caravan card
-    createSpice(color) {
-        var newSpice = $('<div>').css({
-            'height': '10px',
-            'width': '10px',
-            'margin': '2px 2px',
-            'background-color': color,
-        });
-        $('.playerone').append(newSpice);
-    };
-
-    //adds the visual indicator
-    //can call in other places? after you add/remove spices?
-    createVisualSpice(array) {
-        this.domSpice = array;
-        for (var index = 0; index < this.domSpice.length; index++) {
-            var currentColor = this.domSpice[index];
-            this.createSpice(currentColor);
-        }
-    }
 
     buy(cost) {
         if (this.checkCost(cost, this.spice)) {
@@ -69,7 +81,6 @@ class Player {
     }
 
     checkCost(cost, spice) {
-        
         this.spice = spice;
         for (var key in cost) {
             if (cost[key] > this.spice[key]) {
