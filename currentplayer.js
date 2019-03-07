@@ -1,6 +1,7 @@
 class Player {
     constructor(name) {
         this.name = name;
+        this.playernumber = playernumber; //used to append cards to the correct container
         this.spice = {
             yellow: 1,
             red: 0,
@@ -11,21 +12,70 @@ class Player {
         this.factory = [];
         this.city = [];
         this.points = 0;
-        this.playerNumber = 0; //to make their stuff go to the right container
-        this.checkPlayerNumber(this.name);
+
+        this.clickedSpiceValue = {
+            yellow: 0,
+            red: 0,
+            green: 0,
+            brown: 0,
+        };
+
         this.createStartingCards();
-        this.showSpiceValue();
-        // this.createVisualSpice(this.spice);
+        this.createStartingSpice(); //creates the divs
+        this.showSpiceValue(); //pushes the value to the divs
+        this.logClickedSpice();
     };
 
-    //trying to make sure that their stuff goes to the right place
-    checkPlayerNumber(name) {
-        var playerClass = name;
-        if (this.playerNumber < 1) {
-            $(".playerone").addClass(playerClass);
-            this.playerNumber++;
-        } else if (this.playerNumber < 2) {
-            $(".playertwo").addClass(playerClass);
+    //adds the value of clicked spiced to an object, to be used for conversion cards
+    logClickedSpice() {
+        if (this.playernumber === 1) {
+            $(".firstplayer .yellow").click(() => {
+                this.clickedSpiceValue['yellow']++;
+                console.log(this.clickedSpiceValue);
+            })
+            $(".firstplayer .red").click(() => {
+                this.clickedSpiceValue['red']++;
+                console.log(this.clickedSpiceValue);
+            })
+            $(".firstplayer .green").click(() => {
+                this.clickedSpiceValue['green']++;
+                console.log(this.clickedSpiceValue);
+            })
+            $(".firstplayer .brown").click(() => {
+                this.clickedSpiceValue['brown']++;
+                console.log(this.clickedSpiceValue);
+            })
+        } else {
+            $(".secondplayer .yellow").click(() => {
+                this.clickedSpiceValue['yellow']++;
+                console.log(this.clickedSpiceValue);
+            })
+            $(".secondplayer .red").click(() => {
+                this.clickedSpiceValue['red']++;
+                console.log(this.clickedSpiceValue);
+            })
+            $(".secondplayer .green").click(() => {
+                this.clickedSpiceValue['green']++;
+                console.log(this.clickedSpiceValue);
+            })
+            $(".secondplayer .brown").click(() => {
+                this.clickedSpiceValue['brown']++;
+                console.log(this.clickedSpiceValue);
+            })
+        }
+    }
+
+    //ties in with creatingStartingSpice
+    createSpice(color) {
+        var newSpice = $('<div>').addClass('newSpice').css({
+            'background-color': color
+        });
+        newSpice.addClass(color);
+        if (this.playernumber === 1) {
+            $('.playerone').append(newSpice);
+        } else if (this.playernumber === 2) {
+            $('.playertwo').append(newSpice);
+
         }
     }
 
@@ -62,8 +112,19 @@ class Player {
             'input': 2,
             'output': ['to be determined']
         }
-        //pushes them to the factory array
+
+        var newDiv = $("<div>").addClass('modalCard').css('font-size', '2rem');
+
+        //adds a blank card to the modal, add starting yellow stats?
+        if (this.playernumber === 1) {
+            $('#p1factory').append(newDiv);
+        } else if (this.playernumber === 2) {
+            $('#p2factory').append(newDiv);
+        }
+
         this.factory.push(yellowFactoryCard, conversionFactoryCard);
+        
+
     };
 
     buy(cost) {
