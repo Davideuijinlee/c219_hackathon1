@@ -2,8 +2,14 @@ body {
     margin: 0;
     height: 100vh;
     background-color: #f3f3f3;
-    color: #262526;
-    font-family: Arial, sans-serif;
+    color: white;
+    font-family: 'Metamorphous', Arial, sans-serif;
+    background:
+        /* top, transparent red, faked with gradient */
+        linear-gradient(rgba(170, 170, 170, 0.1),
+        rgba(170, 170, 170, 0.1)),
+        url('/images/market.jpg');
+    background-size: cover;
 }
 
 .container {
@@ -11,7 +17,8 @@ body {
     height: 100%;
 }
 
-.firstplayer, .secondplayer {
+.firstplayer,
+.secondplayer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,7 +59,8 @@ body {
     align-items: center;
 }
 
-.citymodal, .conversioncardmodal {
+.citymodal,
+.conversioncardmodal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,7 +79,8 @@ body {
     background-color: #afb2b7;
 }
 
-.cityContainer, .factoryContainer {
+.cityContainer,
+.factoryContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
