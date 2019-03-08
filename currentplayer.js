@@ -1,12 +1,12 @@
 class Player {
-    constructor(name, playernumber) {
+    constructor(name) {
         this.name = name;
         this.playernumber = playernumber; //used to append cards to the correct container
         this.spice = {
-            yellow: 10,
-            red: 10,
-            green: 10,
-            brown: 10,
+            yellow: 1,
+            red: 0,
+            green: 0,
+            brown: 0,
         };
         this.action = false;
         this.factory = [];
@@ -20,9 +20,7 @@ class Player {
             brown: 0,
         };
 
-        this.showSpiceValue = this.showSpiceValue.bind(this);
-        this.updateSpice = this.updateSpice.bind(this);
-
+        this.createStartingCards();
         this.createStartingSpice(); //creates the divs
         this.showSpiceValue(); //pushes the value to the divs
         this.logClickedSpice();
@@ -81,70 +79,62 @@ class Player {
         }
     }
 
-    //makes the spice colors pop up on the DOM
-    createStartingSpice() {
-        this.createSpice('yellow');
-        this.createSpice('red');
-        this.createSpice('green');
-        this.createSpice('brown');
-
-    }
-
     //currently appends to both stat cards, will have to change
     showSpiceValue() {
         var yellow = this.spice.yellow;
+        $(".yellow playerClass").text(yellow);
         var red = this.spice.red;
+        $(".red playerClass").text(red);
         var green = this.spice.green;
+        $(".green playerClass").text(green);
         var brown = this.spice.brown;
-
-        $(".yellow").text(yellow);
-        $(".red").text(red);
-        $(".green").text(green);
-        $(".brown").text(brown);
+        $(".brown playerClass").text(brown);
     }
 
-    updateSpice() {
-        if (gameboard.currentPlayer === 0) {
-            var yellow = this.spice.yellow;
-            var red = this.spice.red;
-            var green = this.spice.green;
-            var brown = this.spice.brown;
-
-            $(".firstplayer .yellow").text(yellow);
-            $(".firstplayer .red").text(red);
-            $(".firstplayer .green").text(green);
-            $(".firstplayer .brown").text(brown);
-            
-        } else if (gameboard.currentPlayer === 1) {
-            var yellow = this.spice.yellow;
-            var red = this.spice.red;
-            var green = this.spice.green;
-            var brown = this.spice.brown;
-
-            $(".secondplayer .yellow").text(yellow);
-            $(".secondplayer .red").text(red);
-            $(".secondplayer .green").text(green);
-            $(".secondplayer .brown").text(brown);
+    createStartingCards() {
+        //gives you the starting two yellow spice card
+        var yellowFactoryCard = {
+            'input': {
+                yellow: 0,
+                red: 0,
+                green: 0,
+                brown: 0,
+            },
+            'output': {
+                yellow: 2,
+                red: 0,
+                green: 0,
+                brown: 0,
+            }
+        };
+        //gives you the starting conversion spice card
+        var conversionFactoryCard = {
+            'input': 2,
+            'output': ['to be determined']
         }
-    }
 
+        var newDiv = $("<div>").addClass('modalCard').css('font-size', '2rem');
 
-    addFactoryCard(card) {
-        this.factory.push(card);
-    }
+        //adds a blank card to the modal, add starting yellow stats?
+        if (this.playernumber === 1) {
+            $('#p1factory').append(newDiv);
+        } else if (this.playernumber === 2) {
+            $('#p2factory').append(newDiv);
+        }
 
-    addCityCard(card) {
-        this.city.push(card);
-    }
+        this.factory.push(yellowFactoryCard, conversionFactoryCard);
+        
+
+    };
 
     buy(cost) {
         if (this.checkCost(cost, this.spice)) {
+            console.log('buying dat shit');
             for (var key in cost) {
                 this.changeSpice(key, cost[key] * -1);
             }
-            return true;
         } else {
-            return false;
+            console.log('tai gui');
         }
     }
 
