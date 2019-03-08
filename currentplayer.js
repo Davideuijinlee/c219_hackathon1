@@ -106,6 +106,10 @@ class Player {
         this.factory.push(card);
     }
 
+    addCityCard( card ){
+        this.city.push(card);
+    }
+
     buy(cost) {
         if (this.checkCost(cost, this.spice)) {
             for (var key in cost) {

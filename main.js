@@ -11,6 +11,7 @@ debugger;
     gameboard.addPlayer('Player 2', 2);
     gameboard.createStartingCards();
     gameboard.createFactoryCard();
+    gameboard.createCityCard();
 }
 
 

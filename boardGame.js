@@ -5,15 +5,16 @@ class GameBoard {
         this.displayArea = $('body'); //change later
         this.players = [];
         this.currentPlayer = 0;
-        // this.displayCityCards(cityCardArray);
-        // this.displayFactoryCards(factoryCardArray);
-       /* this.callbacks = {
-        click: clickCallBack
-        };*/
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
         this.callBack = this.callBack.bind(this);
+<<<<<<< HEAD
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
+=======
+        this.useFactoryCard = this.useFactoryCard.bind(this);
+        this.useCityCard = this.useCityCard.bind(this);
+
+>>>>>>> de5df5217c4a359e56b64bef8b1c9fb9b025d77c
     }
     addPlayer(playerName, playerNumber){
         debugger;
@@ -30,11 +31,12 @@ class GameBoard {
 
     }
     createFactoryCard() {
+        // debugger;
         // console.log('create factory', createdFactoryCard);
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
             var factoryDisplayCard = new FactoryCard(this.buyFactoryCard);
             this.factory.push(factoryDisplayCard);
-            var factoryCardDomElement = factoryDisplayCard.render();
+            var factoryCardDomElement = factoryDisplayCard.renderFactory();
             $('.factoryContainer').append(factoryCardDomElement);
         }
         if (this.factory.length < 6) {
@@ -43,14 +45,12 @@ class GameBoard {
     }
 
     createCityCard() {
+        debugger;
         for (var cityIndex = 0; this.city.length < 5; cityIndex++) {
-            var cityDisplayCard = new CityCard();
+            var cityDisplayCard = new CityCard(this.useCityCard);
             this.city.push(cityDisplayCard);
-            var cityBoardCard = $('<div>',{
-                class: "cityCard",
-                val: cityDisplayCard
-            });
-            $('.cityContainer').append(cityBoardCard);
+            var cityCardDomElement = cityDisplayCard.renderCity();
+            $('.cityContainer').append(cityCardDomElement);
         }
         if (this.city.length < 5) {
             createCityCard();
@@ -88,46 +88,9 @@ class GameBoard {
             this.players[playerIndex].addFactoryCard( factoryCard1);
             this.players[playerIndex].addFactoryCard( factoryCard2);
         }
-
-        //gives you the starting conversion spice card
-        // var conversionFactoryCard = {
-        //     'input': 2,
-        //     'output': ['to be determined']
-        // }
-
-        // var newDiv = $("<div>").addClass('modalCard').css('font-size', '2rem');
-        //
-        // //adds a blank card to the modal, add starting yellow stats?
-        // if (this.playernumber === 1) {
-        //     $('#p1factory').append(newDiv);
-        // } else if (this.playernumber === 2) {
-        //     $('#p2factory').append(newDiv);
-        // }
-        //
-        // this.factory.push(yellowFactoryCard, conversionFactoryCard);
-
-
     }
 
-
-
-    // moveCard() {
-    //     // console.log('move card', moveCard());
-    //     // for (var i = 0; i < players.length; i++) {
-    //     //     if (players[i].city.length === 2) {
-    //     //         checkForPoints = true
-    //     //         break;
-    //     //     }
-    //     // }
-    // }
     winCondition() {
-    //     // var checkForPoints = false;
-    //     // console.log('win condition', winCondition());
-    //     //check player city storage
-    //     // if(Player.city.length === 1){
-    //     //     //games ends
-    //     //     //check values of cities
-    //     // }
         var playerPoints = [];
         playerPoints.push(players[0].points);
         playerPoints.push(players[1].points);
@@ -150,67 +113,25 @@ class GameBoard {
             }
         }
     }
+<<<<<<< HEAD
     buyFactoryCard(card ){
         debugger;
+=======
+    useFactoryCard(card){
+>>>>>>> de5df5217c4a359e56b64bef8b1c9fb9b025d77c
         console.log( card.getInput())
         var factoryCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];
-        if(currentPlayer.buy( factoryCost )){
-            currentPlayer.addFactoryCard( card );
+        if(currentPlayer.buy(factoryCost)){
+            currentPlayer.addFactoryCard(card);
         }
     }
-
-    //if there is player with max cities end game
-    //turn off click handlers
-    //create an alert
-
-    //player with highest value wins
-
-    //check if what the players are offering matches the city card input
-    // doSpice() {
-    //     // console.log('doSpice', doSpice());
-    // }
-
-
-    //displays the city cards onto the dom
-    //when to call this? after buying city
-    //clear DOM before adding if adding after buying?
-    displayCityCards(array) {
-        for (var index = 0; index < array.length; index++) {
-            var newCityCard = $("<div>").addClass('cityCard').text(`Cost: ${array[index]['price']}
-            Value: ${array[index]['value']}`);
-            $(".cityContainer").append(newCityCard);
-        }
-    };
-
-    displayFactoryCards(array) {
-        for (var index = 0; index < array.length; index++) {
-            var inputValue = array[index]['input'];
-            var newFactoryCard = $("<div>", {
-                class: 'factoryCard',
-                why: inputValue,
-                output: `${array[index]['output']}`,
-                text: `Input: ${array[index]['input']}
-                output: ${array[index]['output']}`,
-            });
-            $(".factoryContainer").append(newFactoryCard);
-        }
-    };
-    render(){
-        // debugger;
-        for(var cardCreationPosition = 0; cardCreationPosition < this.factory.length; cardCreationPosition++){
-            var factoryBoardCard = $('<div>',{
-                class: "factoryCard",
-                text: '1'
-            });
-            $('.factoryContainer').append(factoryBoardCard);
-        }
-        for(var cardCreationPosition = 0; cardCreationPosition < this.city.length; cardCreationPosition++){
-            var cityBoardCard = $('<div>',{
-                class: "cityCard",
-                text: '1'
-            });
-            $('.cityContainer').append(cityBoardCard);
+    useCityCard(card){
+        console.log( card.getInput())
+        var cityCost = card.getInput();
+        var currentPlayer = this.players[ this.currentPlayer ];
+        if(currentPlayer.buy(cityCost)){
+            currentPlayer.addCityCard(card);
         }
     }
 } 

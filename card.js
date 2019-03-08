@@ -1,30 +1,53 @@
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> de5df5217c4a359e56b64bef8b1c9fb9b025d77c
 class CityCard{
-    constructor(costs){
+    constructor(clickCallback, costs, output){
+        this.clickCallback = clickCallback;
+        this.price = {};
         if(costs === undefined) {
-            this.price = {
+            this.input = {
                 yellow: Math.floor(Math.random() * 4),
                 red: Math.floor(Math.random() * 4),
                 green: Math.floor(Math.random() * 3),
                 brown: Math.floor(Math.random() * 3)
             }
         } else {
-            this.price = {
+            this.input = {
                 yellow: costs.yellow,
                 red: costs.red,
                 brown: costs.brown,
                 green: costs.green
             }
         }
-        this.value = Math.floor(Math.random() * 5)+ 1;
-        var nestedCityObject = Object.assign(this.price, this.value);
-        console.log(nestedCityObject);
+        this.factoryElement = null;
+        if(output === undefined){
+        this.output = Math.floor(Math.random() * 5)+ 1;
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick(){
+        debugger;
+        this.clickCallback(this);
+    }
+    getInput(){
+        return this.input;
+    }
+    renderCity(){
+        this.cityElement = $('<div>',{
+            class: "cityCard",
+            on: {
+                click: this.handleClick
+            }
+        });
+        return this.cityElement;
     }
 }
 
 class FactoryCard{
-    constructor( clickCallback, costs, output,  ){
+    constructor(clickCallback, costs, output){
         this.clickCallback = clickCallback;
         this.price = {};
         if(costs === undefined){
@@ -48,8 +71,7 @@ class FactoryCard{
             green : 1,
             brown : 1,
         }
-        this.domElement = null;
-
+        this.factoryElement = null;
         if(output===undefined){
             this.output= {
                 yellow : Math.floor(Math.random() * 4),
@@ -65,12 +87,7 @@ class FactoryCard{
                 green: output.green
             }
         }
-        
-
-       //  console.log("factory card created")
-       // var nestedFactoryObject = Object.assign(this.input, this.value, this.output);
-       //  console.log(nestedFactoryObject);
-        this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
         debugger;
@@ -79,13 +96,13 @@ class FactoryCard{
     getInput(){
         return this.input;
     }
-    render(){
-        this.domElement = $('<div>',{
+    renderFactory(){
+        this.factoryElement = $('<div>',{
             class: "factoryCard",
             on: {
                 click: this.handleClick
             }
         });
-        return this.domElement;
+        return this.factoryElement;
     }
 }
