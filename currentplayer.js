@@ -20,6 +20,8 @@ class Player {
             brown: 0,
         };
 
+        this.showSpiceValue = this.showSpiceValue.bind(this);
+        this.updateSpice = this.updateSpice.bind(this);
 
         this.createStartingSpice(); //creates the divs
         this.showSpiceValue(); //pushes the value to the divs
@@ -101,12 +103,37 @@ class Player {
         $(".brown").text(brown);
     }
 
+    updateSpice() {
+        if (gameboard.currentPlayer === 0) {
+            var yellow = this.spice.yellow;
+            var red = this.spice.red;
+            var green = this.spice.green;
+            var brown = this.spice.brown;
 
-    addFactoryCard( card ){
+            $(".firstplayer .yellow").text(yellow);
+            $(".firstplayer .red").text(red);
+            $(".firstplayer .green").text(green);
+            $(".firstplayer .brown").text(brown);
+            
+        } else if (gameboard.currentPlayer === 1) {
+            var yellow = this.spice.yellow;
+            var red = this.spice.red;
+            var green = this.spice.green;
+            var brown = this.spice.brown;
+
+            $(".secondplayer .yellow").text(yellow);
+            $(".secondplayer .red").text(red);
+            $(".secondplayer .green").text(green);
+            $(".secondplayer .brown").text(brown);
+        }
+    }
+
+
+    addFactoryCard(card) {
         this.factory.push(card);
     }
 
-    addCityCard( card ){
+    addCityCard(card) {
         this.city.push(card);
     }
 

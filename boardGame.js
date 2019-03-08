@@ -107,6 +107,7 @@ class GameBoard {
         if(currentPlayer.buy(cityCost)){
             currentPlayer.addCityCard(card);
         }
+        currentPlayer.updateSpice();
         this.winCondition();
         alert('You purchased a city!')
     }
