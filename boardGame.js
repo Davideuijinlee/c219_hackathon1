@@ -13,7 +13,7 @@ class GameBoard {
 
     }
     addPlayer(playerName, playerNumber){
-        debugger;
+        // debugger;
         var player = new Player(playerName, playerNumber);
         this.players.push(player);
     }
@@ -23,8 +23,6 @@ class GameBoard {
     }
     callBack(event){
         var testVar = $(event.currentTarget);
-        console.log("this: "+this);
-
     }
     createFactoryCard() {
         // debugger;
@@ -41,7 +39,7 @@ class GameBoard {
     }
 
     createCityCard() {
-        debugger;
+        // debugger;
         for (var cityIndex = 0; this.city.length < 5; cityIndex++) {
             var cityDisplayCard = new CityCard(this.useCityCard);
             this.city.push(cityDisplayCard);
@@ -87,27 +85,35 @@ class GameBoard {
     }
 
     winCondition() {
-        var playerPoints = [];
-        playerPoints.push(players[0].points);
-        playerPoints.push(players[1].points);
-        var highest = 0;
-        for (var i = 0; i < players.length; i++) {
-            if (highest < players[i].points) {
-                highest = players[i].points;
-            }
+        if(gameboard.players[0].city.length === 2){
+            alert('Player 1 is the Winner!');
         }
-
-        var playerPointsCombinedArray = $.map(players, function (n, i) {
-            return [n, playerPoints[i]];
-        });
+        else if(gameboard.players[1].city.length === 2){
+            alert('Player 2 is the Winner!');
+        }
+        else{
+            return;
+        }
+        // var playerPoints = [];
+        // playerPoints.push(players[0].points);
+        // playerPoints.push(players[1].points);
+        // var highest = 0;
+        // for (var i = 0; i < players.length; i++) {
+        //     if (highest < players[i].points) {
+        //         highest = players[i].points;
+        //     }
+        // }
+        // var playerPointsCombinedArray = $.map(players, function (n, i) {
+        //     return [n, playerPoints[i]];
+        // });
 
         // console.log(playerPointsCombinedArray);
         // console.log("The highest points is ", highest);
-        for (i = 0; i < playerPointsCombinedArray.length; i++) {
-            if (highest === playerPointsCombinedArray[i]) {
-                console.log(playerPointsCombinedArray[i - 1].name, "wins!");
-            }
-        }
+        // for (i = 0; i < playerPointsCombinedArray.length; i++) {
+        //     if (highest === playerPointsCombinedArray[i]) {
+        //         console.log(playerPointsCombinedArray[i - 1].name, "wins!");
+        //     }
+        // }
     }
 
     buyFactoryCard(card){
@@ -125,5 +131,6 @@ class GameBoard {
         if(currentPlayer.buy(cityCost)){
             currentPlayer.addCityCard(card);
         }
+        this.winCondition();
     }
 } 

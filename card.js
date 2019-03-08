@@ -25,7 +25,7 @@ class CityCard{
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        debugger;
+        // debugger;
         this.clickCallback(this);
     }
     getInput(){
@@ -86,7 +86,6 @@ class FactoryCard{
     this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        debugger;
         this.clickCallback(this);
     }
     getInput(){
