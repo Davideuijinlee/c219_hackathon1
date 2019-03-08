@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 
-
-=======
->>>>>>> de5df5217c4a359e56b64bef8b1c9fb9b025d77c
 class CityCard{
     constructor(clickCallback, costs, output){
         this.clickCallback = clickCallback;

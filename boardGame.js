@@ -8,13 +8,9 @@ class GameBoard {
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
         this.callBack = this.callBack.bind(this);
-<<<<<<< HEAD
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
-=======
-        this.useFactoryCard = this.useFactoryCard.bind(this);
         this.useCityCard = this.useCityCard.bind(this);
 
->>>>>>> de5df5217c4a359e56b64bef8b1c9fb9b025d77c
     }
     addPlayer(playerName, playerNumber){
         debugger;
@@ -113,12 +109,8 @@ class GameBoard {
             }
         }
     }
-<<<<<<< HEAD
-    buyFactoryCard(card ){
-        debugger;
-=======
-    useFactoryCard(card){
->>>>>>> de5df5217c4a359e56b64bef8b1c9fb9b025d77c
+
+    buyFactoryCard(card){
         console.log( card.getInput())
         var factoryCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];
