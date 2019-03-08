@@ -108,6 +108,7 @@ class GameBoard {
             currentPlayer.addCityCard(card);
         }
         this.winCondition();
+
         alert('You purchased a city!')
     }
 } 
