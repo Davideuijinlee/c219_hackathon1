@@ -3,10 +3,10 @@ class Player {
         this.name = name;
         this.playernumber = playernumber; //used to append cards to the correct container
         this.spice = {
-            yellow: 1,
-            red: 0,
-            green: 0,
-            brown: 0,
+            yellow: 10,
+            red: 10,
+            green: 10,
+            brown: 10,
         };
         this.action = false;
         this.factory = [];
@@ -20,7 +20,7 @@ class Player {
             brown: 0,
         };
 
-        this.createStartingCards();
+
         this.createStartingSpice(); //creates the divs
         this.showSpiceValue(); //pushes the value to the divs
         this.logClickedSpice();
@@ -101,50 +101,19 @@ class Player {
         $(".brown").text(brown);
     }
 
-    createStartingCards() {
-        //gives you the starting two yellow spice card
-        var yellowFactoryCard = {
-            'input': {
-                yellow: 0,
-                red: 0,
-                green: 0,
-                brown: 0,
-            },
-            'output': {
-                yellow: 2,
-                red: 0,
-                green: 0,
-                brown: 0,
-            }
-        };
-        //gives you the starting conversion spice card
-        var conversionFactoryCard = {
-            'input': 2,
-            'output': ['to be determined']
-        }
 
-        var newDiv = $("<div>").addClass('modalCard').css('font-size', '2rem');
-
-        //adds a blank card to the modal, add starting yellow stats?
-        if (this.playernumber === 1) {
-            $('#p1factory').append(newDiv);
-        } else if (this.playernumber === 2) {
-            $('#p2factory').append(newDiv);
-        }
-
-        this.factory.push(yellowFactoryCard, conversionFactoryCard);
-
-
-    };
+    addFactoryCard( card ){
+        this.factory.push(card);
+    }
 
     buy(cost) {
         if (this.checkCost(cost, this.spice)) {
-            console.log('buying dat shit');
             for (var key in cost) {
                 this.changeSpice(key, cost[key] * -1);
             }
+            return true;
         } else {
-            console.log('tai gui');
+            return false;
         }
     }
 

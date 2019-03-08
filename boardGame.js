@@ -3,34 +3,38 @@ class GameBoard {
         this.city = []; //length 5
         this.factory = []; //length 6
         this.displayArea = $('body'); //change later
+        this.players = [];
+        this.currentPlayer = 0;
         // this.displayCityCards(cityCardArray);
         // this.displayFactoryCards(factoryCardArray);
-        // this.callbacks = {
-        // click: clickCallBack
-        // }
+       /* this.callbacks = {
+        click: clickCallBack
+        };*/
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
+        this.callBack = this.callBack.bind(this);
+        this.useFactoryCard = this.useFactoryCard.bind(this);
     }
-
+    addPlayer(playerName, playerNumber){
+        var player = new Player(playerName, playerNumber);
+        this.players.push(player);
+    }
     handleClick() {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
     }
     callBack(event){
         var testVar = $(event.currentTarget);
-        console.log('clicked');
+        console.log("this: "+this);
 
     }
     createFactoryCard() {
         // console.log('create factory', createdFactoryCard);
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
-            var factoryDisplayCard = new FactoryCard();
+            var factoryDisplayCard = new FactoryCard(this.useFactoryCard);
             this.factory.push(factoryDisplayCard);
-            var factoryBoardCard = $('<div>',{
-                class: "factoryCard",
-                val: factoryDisplayCard
-            });
-            $('.factoryContainer').append(factoryBoardCard);
+            var factoryCardDomElement = factoryDisplayCard.render();
+            $('.factoryContainer').append(factoryCardDomElement);
         }
         if (this.factory.length < 6) {
             createFactoryCard();
@@ -51,6 +55,60 @@ class GameBoard {
             createCityCard();
         }
     }
+    createStartingCards() {
+        //gives you the starting two yellow spice card
+        for( var playerIndex=0; playerIndex< this.players.length; playerIndex++){
+            var input= {
+                yellow: 0,
+                red: 0,
+                green: 0,
+                brown: 0,
+            }
+            var output = {
+                yellow: 2,
+                red: 0,
+                green: 0,
+                brown: 0,
+            }
+            var factoryCard1 = new FactoryCard(this.useFactoryCard, input, output );
+            var input= {
+                yellow: 0,
+                red: 0,
+                green: 0,
+                brown: 0,
+            }
+            var output = {
+                yellow: 0,
+                red: 1,
+                green: 1,
+                brown: 0,
+            }
+            var factoryCard2 = new FactoryCard(this.useFactoryCard, input, output);
+            this.players[playerIndex].addFactoryCard( factoryCard1);
+            this.players[playerIndex].addFactoryCard( factoryCard2);
+        }
+
+        //gives you the starting conversion spice card
+        // var conversionFactoryCard = {
+        //     'input': 2,
+        //     'output': ['to be determined']
+        // }
+
+        // var newDiv = $("<div>").addClass('modalCard').css('font-size', '2rem');
+        //
+        // //adds a blank card to the modal, add starting yellow stats?
+        // if (this.playernumber === 1) {
+        //     $('#p1factory').append(newDiv);
+        // } else if (this.playernumber === 2) {
+        //     $('#p2factory').append(newDiv);
+        // }
+        //
+        // this.factory.push(yellowFactoryCard, conversionFactoryCard);
+
+
+    }
+
+
 
     // moveCard() {
     //     // console.log('move card', moveCard());
@@ -89,6 +147,14 @@ class GameBoard {
             if (highest === playerPointsCombinedArray[i]) {
                 console.log(playerPointsCombinedArray[i - 1].name, "wins!");
             }
+        }
+    }
+    useFactoryCard( card ){
+        console.log( card.getInput())
+        var factoryCost = card.getInput();
+        var currentPlayer = this.players[ this.currentPlayer ];
+        if(currentPlayer.buy( factoryCost )){
+            currentPlayer.addFactoryCard( card );
         }
     }
 
