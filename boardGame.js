@@ -13,9 +13,10 @@ class GameBoard {
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
         this.callBack = this.callBack.bind(this);
-        this.useFactoryCard = this.useFactoryCard.bind(this);
+        this.buyFactoryCard = this.buyFactoryCard.bind(this);
     }
     addPlayer(playerName, playerNumber){
+        debugger;
         var player = new Player(playerName, playerNumber);
         this.players.push(player);
     }
@@ -31,7 +32,7 @@ class GameBoard {
     createFactoryCard() {
         // console.log('create factory', createdFactoryCard);
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
-            var factoryDisplayCard = new FactoryCard(this.useFactoryCard);
+            var factoryDisplayCard = new FactoryCard(this.buyFactoryCard);
             this.factory.push(factoryDisplayCard);
             var factoryCardDomElement = factoryDisplayCard.render();
             $('.factoryContainer').append(factoryCardDomElement);
@@ -70,7 +71,7 @@ class GameBoard {
                 green: 0,
                 brown: 0,
             }
-            var factoryCard1 = new FactoryCard(this.useFactoryCard, input, output );
+            var factoryCard1 = new FactoryCard(this.buyFactoryCard, input, output );
             var input= {
                 yellow: 0,
                 red: 0,
@@ -83,7 +84,7 @@ class GameBoard {
                 green: 1,
                 brown: 0,
             }
-            var factoryCard2 = new FactoryCard(this.useFactoryCard, input, output);
+            var factoryCard2 = new FactoryCard(this.buyFactoryCard, input, output);
             this.players[playerIndex].addFactoryCard( factoryCard1);
             this.players[playerIndex].addFactoryCard( factoryCard2);
         }
@@ -149,7 +150,8 @@ class GameBoard {
             }
         }
     }
-    useFactoryCard( card ){
+    buyFactoryCard(card ){
+        debugger;
         console.log( card.getInput())
         var factoryCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];

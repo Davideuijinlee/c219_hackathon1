@@ -25,7 +25,7 @@
 <body>
     <div id="clickMe" class="container">
         <div class="firstplayer">
-            <h1 class="playertitle">Player One</h1>
+            <h1 class="playertitle" onclick="gameboard.currentPlayer=0">Player One</h1>
             <div class="caravancard playerone"></div>
             <div class="modalcontainer">
                 <div class="citymodal"><a href="#p1city" rel="modal:open">Cities</a></div>
@@ -34,7 +34,7 @@
             <div class="cityContainer"></div>
         </div>
         <div class="secondplayer">
-            <h1 class="playertitle">Player Two</h1>
+            <h1 class="playertitle" onclick="gameboard.currentPlayer=1">Player Two</h1>
             <div class="caravancard playertwo"></div>
             <div class="modalcontainer">
                 <div class="citymodal"><a href="#p2city" rel="modal:open">Cities</a></div>

@@ -1,4 +1,4 @@
-//var randomizerMath =
+
 
 class CityCard{
     constructor(costs){

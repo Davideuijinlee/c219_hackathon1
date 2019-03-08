@@ -75,7 +75,7 @@ body {
     background-position: center;
     color: rgba(255, 255, 255, 0)
 }
-
+.playertitle:hover,
 .citymodal:hover,
 .conversioncardmodal:hover {
     color: rgba(255, 255, 255, 1);
