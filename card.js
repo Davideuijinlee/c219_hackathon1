@@ -25,7 +25,6 @@ class CityCard{
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(){
-        // debugger;
         this.clickCallback(this);
     }
     getInput(){

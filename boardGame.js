@@ -1,8 +1,8 @@
 class GameBoard {
     constructor() {
-        this.city = []; //length 5
-        this.factory = []; //length 6
-        this.displayArea = $('body'); //change later
+        this.city = []; 
+        this.factory = []; 
+        this.displayArea = $('body'); 
         this.players = [];
         this.currentPlayer = 0;
         this.handleClick = this.handleClick.bind(this);
@@ -13,7 +13,6 @@ class GameBoard {
 
     }
     addPlayer(playerName, playerNumber){
-        // debugger;
         var player = new Player(playerName, playerNumber);
         this.players.push(player);
     }
@@ -25,8 +24,6 @@ class GameBoard {
         var testVar = $(event.currentTarget);
     }
     createFactoryCard() {
-        // debugger;
-        // console.log('create factory', createdFactoryCard);
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
             var factoryDisplayCard = new FactoryCard(this.buyFactoryCard);
             this.factory.push(factoryDisplayCard);
@@ -39,7 +36,6 @@ class GameBoard {
     }
 
     createCityCard() {
-        // debugger;
         for (var cityIndex = 0; this.city.length < 5; cityIndex++) {
             var cityDisplayCard = new CityCard(this.useCityCard);
             this.city.push(cityDisplayCard);
@@ -51,7 +47,6 @@ class GameBoard {
         }
     }
     createStartingCards() {
-        //gives you the starting two yellow spice card
         for( var playerIndex=0; playerIndex< this.players.length; playerIndex++){
             var input= {
                 yellow: 0,
@@ -94,43 +89,25 @@ class GameBoard {
         else{
             return;
         }
-        // var playerPoints = [];
-        // playerPoints.push(players[0].points);
-        // playerPoints.push(players[1].points);
-        // var highest = 0;
-        // for (var i = 0; i < players.length; i++) {
-        //     if (highest < players[i].points) {
-        //         highest = players[i].points;
-        //     }
-        // }
-        // var playerPointsCombinedArray = $.map(players, function (n, i) {
-        //     return [n, playerPoints[i]];
-        // });
-
-        // console.log(playerPointsCombinedArray);
-        // console.log("The highest points is ", highest);
-        // for (i = 0; i < playerPointsCombinedArray.length; i++) {
-        //     if (highest === playerPointsCombinedArray[i]) {
-        //         console.log(playerPointsCombinedArray[i - 1].name, "wins!");
-        //     }
-        // }
     }
 
     buyFactoryCard(card){
-        console.log( card.getInput())
+        console.log(card.getInput())
         var factoryCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];
         if(currentPlayer.buy(factoryCost)){
             currentPlayer.addFactoryCard(card);
         }
+        alert('You collected a factory!')
     }
     useCityCard(card){
-        console.log( card.getInput())
+        console.log(card.getInput())
         var cityCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];
         if(currentPlayer.buy(cityCost)){
             currentPlayer.addCityCard(card);
         }
         this.winCondition();
+        alert('You purchased a city!')
     }
 } 

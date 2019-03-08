@@ -6,7 +6,6 @@ var players = [];
 
 function startGame() {
     gameboard = new GameBoard;
-// debugger;
     gameboard.addPlayer('Player 1', 1);
     gameboard.addPlayer('Player 2', 2);
     gameboard.createStartingCards();
