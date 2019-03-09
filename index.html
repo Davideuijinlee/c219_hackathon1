@@ -20,7 +20,8 @@
 <body>
     <div id="clickMe" class="container">
         <div class="firstplayer">
-            <h1 class="playertitle" onclick="gameboard.currentPlayer=0; alertPlayerTurn();gameboard.currentPlayer">Player One</h1>
+            <h1 class="playertitle" onclick="gameboard.currentPlayer=0; alertPlayerTurn();gameboard.currentPlayer">Player
+                One</h1>
             <div class="caravancard playerone"></div>
             <div class="modalcontainer">
                 <div class="citymodal"><a href="#p1city" rel="modal:open">Cities</a></div>
@@ -44,6 +45,7 @@
     </div>
 
     <div id="p1factory" class="modal playeroneModal factories">
+        <div class="p1factorycontainer"></div>
         <a href="#" rel="modal:close">Close</a>
     </div>
 
@@ -52,8 +54,10 @@
     </div>
 
     <div id="p2factory" class="modal playertwoModal factories">
+        <div class="p2factorycontainer"></div>
         <a href="#" rel="modal:close">Close</a>
     </div>
 
 </body>
+
 </html>

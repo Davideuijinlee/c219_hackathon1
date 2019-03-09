@@ -10,6 +10,7 @@ class GameBoard {
         this.callBack = this.callBack.bind(this);
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
         this.useCityCard = this.useCityCard.bind(this);
+        this.newCard = $("<div>").addClass('modalCard');
 
     }
     addPlayer(playerName, playerNumber){
@@ -21,7 +22,7 @@ class GameBoard {
         $('#clickMe').on('click', '.factoryCard', this.callBack);
     }
     callBack(event){
-        var testVar = $(event.currentTarget);
+        //does nothing so far
     }
     createFactoryCard() {
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
@@ -94,12 +95,38 @@ class GameBoard {
     buyFactoryCard(card){
         console.log(card.getInput())
         var factoryCost = card.getInput();
+
+        var yellow = factoryCost.yellow;
+        var red = factoryCost.red;
+        var green = factoryCost.green;
+        var brown = factoryCost.brown;
+
         var currentPlayer = this.players[ this.currentPlayer ];
+
         if(currentPlayer.buy(factoryCost)){
+            debugger;
             currentPlayer.addFactoryCard(card);
+            if (this.currentPlayer === 0) {
+                $(this.newCard).text(`${yellow} | 
+                ${red} | 
+                ${green} | 
+                ${brown}`);
+                $('.p1factorycontainer').append(this.newCard);
+            } else if (this.currentPlayer === 1) {
+                $(this.newCard).text(`${yellow} | 
+                ${red} | 
+                ${green} | 
+                ${brown}`);
+                $('.p2factorycontainer').append(this.newCard);
+            }
         }
         alert('You collected a factory!')
     }
+
+    moveCard(){
+        // currentPlayer.factory.splice()
+    }
+
     useCityCard(card){
         console.log(card.getInput())
         var cityCost = card.getInput();
