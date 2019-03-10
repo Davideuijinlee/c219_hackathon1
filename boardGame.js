@@ -87,8 +87,7 @@ class GameBoard {
         }
         else if(gameboard.players[1].city.length === 2){
             $('.secondplayer .playertitle').addClass('glow').text('Player Two WINS!');
-            $('.firstplayer .playertitle').removeClass('glow').text("Bend the knee...")
-            //removed alert. call to new player notification method will go here
+            $('.firstplayer .playertitle').removeClass('glow').text("Bend the knee...");
         }
         else{
             return;
@@ -96,7 +95,7 @@ class GameBoard {
     }
 
     buyFactoryCard(card){
-        console.log(card.getInput())
+        console.log(card.getInput());
         var factoryCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];
         if(currentPlayer.buy(factoryCost)){
@@ -141,13 +140,5 @@ class GameBoard {
         }
         */
     }
-        //will handle switching turns after player makes an action
-            //buying a city
-            //buying a factory
-            //using a factory card
-            //using an upgrade card
-            //resting
 
-        //after every action made, call boardGame.playerTurn to trigger this method
-        //so, look at the click handler for each card and throw this in there
 } 
