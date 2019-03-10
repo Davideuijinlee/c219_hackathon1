@@ -94,7 +94,7 @@ class GameBoard {
             $(".factoryContainer").addClass("winCondition");
             $(".cityContainer").addClass("winCondition");
             $(".citymodal").addClass("winCondition");
-            $(".conversioncardmodal").addClass("winCondition");
+            $(".conversioncardmodal").addClass("winCondition"); 
         }
         else{
             return;
