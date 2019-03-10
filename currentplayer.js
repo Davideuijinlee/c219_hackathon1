@@ -125,7 +125,30 @@ class Player {
             $(".secondplayer .red").text(red);
             $(".secondplayer .green").text(green);
             $(".secondplayer .brown").text(brown);
+
         }
+        //this is here for future expandability to 4 players and because I created an array in boardGame.playerTurn that will be looped through to increment playerTurn
+        /*else if (gameboard.currentPlayer === 2) {
+            var yellow = this.spice.yellow;
+            var red = this.spice.red;
+            var green = this.spice.green;
+            var brown = this.spice.brown;
+
+            $(".thirdplayer .yellow").text(yellow);
+            $(".thirdplayer .red").text(red);
+            $(".thirdplayer .green").text(green);
+            $(".thirdplayer .brown").text(brown);
+        }else{
+            var yellow = this.spice.yellow;
+            var red = this.spice.red;
+            var green = this.spice.green;
+            var brown = this.spice.brown;
+
+            $(".fourthplayer .yellow").text(yellow);
+            $(".fourthplayer .red").text(red);
+            $(".fourthplayer .green").text(green);
+            $(".fourthplayer .brown").text(brown);
+        }*/
     }
 
 
@@ -136,7 +159,7 @@ class Player {
     addCityCard(card) {
         this.city.push(card);
     }
-
+debugger;
     buy(cost) {
         if (this.checkCost(cost, this.spice)) {
             for (var key in cost) {

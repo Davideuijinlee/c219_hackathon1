@@ -4,7 +4,7 @@ class GameBoard {
         this.factory = []; 
         this.displayArea = $('body'); 
         this.players = [];
-        this.currentPlayer = 0;
+        this.currentPlayer = 0; //game starts on player 0
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
         this.callBack = this.callBack.bind(this);
@@ -81,10 +81,10 @@ class GameBoard {
 
     winCondition() {
         if(gameboard.players[0].city.length === 2){
-            alert('Player 1 is the Winner!');
+            //removed alert. call to new player notification method will go here
         }
         else if(gameboard.players[1].city.length === 2){
-            alert('Player 2 is the Winner!');
+            //removed alert. call to new player notification method will go here
         }
         else{
             return;
@@ -98,10 +98,10 @@ class GameBoard {
         if(currentPlayer.buy(factoryCost)){
             currentPlayer.addFactoryCard(card);
         }
-        alert('You collected a factory!')
+        gameboard.changePlayerTurn();
     }
     useCityCard(card){
-        console.log(card.getInput())
+        console.log(card.getInput());
         var cityCost = card.getInput();
         var currentPlayer = this.players[ this.currentPlayer ];
         if(currentPlayer.buy(cityCost)){
@@ -109,6 +109,39 @@ class GameBoard {
         }
         currentPlayer.updateSpice();
         this.winCondition();
-        alert('You purchased a city!')
+        gameboard.changePlayerTurn();
+        //will need to call the changeplayerTurn method and notify user method
     }
+    changePlayerTurn(){
+        console.log("playerTurn has been called");
+
+        var currentPlayer = this.players[ this.currentPlayer ];
+        if(this.currentPlayer === 0){//player 1
+            this.players[ this.currentPlayer ] = 1;//change to player 2
+            console.log("current player is now player 2")
+        }else{//this.currentPlayer === 1 - player is 2
+            this.players[this.currentPlayer] = 0;//change to player 1
+            console.log("current player is now player 2")
+        }
+        //when player three and four are enabled delete the above else and uncomment the below
+        /*else if(currentPlayer === 1){//player 2
+            this.players[ this.currentPlayer ] = 2;//change to player 3
+            console.log("current player is now player 3")
+        }else if(currentPlayer === 2{//player 3
+            this.players[ this.currentPlayer ] = 3;//change to player 4
+            console.log("current player is now player 4")
+        }else{//currentPlayer === 3 - player is 4
+            this.players[ this.currentPlayer ] = 0;//change to player 1
+            console.log("current player is now player 1")
+        }*/
+    }
+        //will handle switching turns after player makes an action
+            //buying a city
+            //buying a factory
+            //using a factory card
+            //using an upgrade card
+            //resting
+
+        //after every action made, call boardGame.playerTurn to trigger this method
+        //so, look at the click handler for each card and throw this in there
 } 
