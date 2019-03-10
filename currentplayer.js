@@ -159,7 +159,6 @@ class Player {
     addCityCard(card) {
         this.city.push(card);
     }
-debugger;
     buy(cost) {
         if (this.checkCost(cost, this.spice)) {
             for (var key in cost) {

@@ -98,7 +98,7 @@ class GameBoard {
         if(currentPlayer.buy(factoryCost)){
             currentPlayer.addFactoryCard(card);
         }
-        gameboard.changePlayerTurn();
+        //gameboard.changePlayerTurn();
     }
     useCityCard(card){
         console.log(card.getInput());
@@ -109,14 +109,14 @@ class GameBoard {
         }
         currentPlayer.updateSpice();
         this.winCondition();
-        gameboard.changePlayerTurn();
+        //gameboard.changePlayerTurn();
         //will need to call the changeplayerTurn method and notify user method
     }
     changePlayerTurn(){
         console.log("playerTurn has been called");
 
         var currentPlayer = this.players[ this.currentPlayer ];
-        if(this.currentPlayer === 0){//player 1
+        if(currentPlayer === 0){//player 1
             this.players[ this.currentPlayer ] = 1;//change to player 2
             console.log("current player is now player 2")
         }else{//this.currentPlayer === 1 - player is 2
