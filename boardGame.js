@@ -115,13 +115,12 @@ class GameBoard {
     changePlayerTurn(){
         console.log("playerTurn has been called");
 
-        var currentPlayer = this.players[ this.currentPlayer ];
-        if(currentPlayer === 0){//player 1
-            this.players[ this.currentPlayer ] = 1;//change to player 2
+        if(this.currentPlayer === 0){//player 1
+            this.currentPlayer = 1;//change to player 2
             console.log("current player is now player 2")
         }else{//this.currentPlayer === 1 - player is 2
-            this.players[this.currentPlayer] = 0;//change to player 1
-            console.log("current player is now player 2")
+            this.currentPlayer = 0;//change to player 1
+            console.log("current player is now player 1")
         }
         //when player three and four are enabled delete the above else and uncomment the below
         /*else if(currentPlayer === 1){//player 2

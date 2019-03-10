@@ -26,6 +26,7 @@ class CityCard{
     }
     handleClick(){
         this.clickCallback(this);
+        gameboard.changePlayerTurn();
     }
     getInput(){
         return this.input;
@@ -86,6 +87,8 @@ class FactoryCard{
     }
     handleClick(){
         this.clickCallback(this);
+        gameboard.changePlayerTurn();
+
     }
     getInput(){
         return this.input;
