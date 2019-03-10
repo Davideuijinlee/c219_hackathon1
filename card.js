@@ -26,6 +26,11 @@ class CityCard{
     }
     handleClick(){
         this.clickCallback(this);
+        if(gameboard.players[0].city.length === 2){
+            return;
+        }else if(gameboard.players[1].city.length === 2){
+            return;
+        }//will have to add more else if statments here for additional players as they are built into the game
         gameboard.changePlayerTurn();
     }
     getInput(){

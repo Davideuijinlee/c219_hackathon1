@@ -81,9 +81,13 @@ class GameBoard {
 
     winCondition() {
         if(gameboard.players[0].city.length === 2){
-            //removed alert. call to new player notification method will go here
+            $('.firstplayer .playertitle').text("Player One WINS!");
+            $('.secondplayer .playertitle').text("Bend the knee...");
+
         }
         else if(gameboard.players[1].city.length === 2){
+            $('.secondplayer .playertitle').addClass('glow').text('Player Two WINS!');
+            $('.firstplayer .playertitle').removeClass('glow').text("Bend the knee...")
             //removed alert. call to new player notification method will go here
         }
         else{
@@ -98,7 +102,6 @@ class GameBoard {
         if(currentPlayer.buy(factoryCost)){
             currentPlayer.addFactoryCard(card);
         }
-        //gameboard.changePlayerTurn();
     }
     useCityCard(card){
         console.log(card.getInput());
@@ -109,30 +112,34 @@ class GameBoard {
         }
         currentPlayer.updateSpice();
         this.winCondition();
-        //gameboard.changePlayerTurn();
-        //will need to call the changeplayerTurn method and notify user method
     }
     changePlayerTurn(){
         console.log("playerTurn has been called");
 
         if(this.currentPlayer === 0){//player 1
             this.currentPlayer = 1;//change to player 2
+            $(".firstplayer .playertitle").removeClass("glow");
+            $(".secondplayer .playertitle").addClass("glow");
             console.log("current player is now player 2")
         }else{//this.currentPlayer === 1 - player is 2
             this.currentPlayer = 0;//change to player 1
+            $(".secondplayer .playertitle").removeClass("glow");
+            $(".firstplayer .playertitle").addClass("glow");
             console.log("current player is now player 1")
         }
         //when player three and four are enabled delete the above else and uncomment the below
-        /*else if(currentPlayer === 1){//player 2
-            this.players[ this.currentPlayer ] = 2;//change to player 3
+        /*
+        else if(this.currentPlayer === 1){//player 2
+            this.currentPlayer = 2;//change to player 3
             console.log("current player is now player 3")
-        }else if(currentPlayer === 2{//player 3
-            this.players[ this.currentPlayer ] = 3;//change to player 4
+        }else if(this.currentPlayer === 2){//player 3
+            this.currentPlayer = 3;//change to player 4
             console.log("current player is now player 4")
-        }else{//currentPlayer === 3 - player is 4
-            this.players[ this.currentPlayer ] = 0;//change to player 1
+        }else{//this.currentPlayer === 3 - player 4
+            this.currentPlayer = 0;//change to player 1
             console.log("current player is now player 1")
-        }*/
+        }
+        */
     }
         //will handle switching turns after player makes an action
             //buying a city
