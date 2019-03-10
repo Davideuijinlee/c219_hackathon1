@@ -7,6 +7,7 @@ class GameBoard {
         this.currentPlayer = 0; //game starts on player 0
         this.handleClick = this.handleClick.bind(this);
         this.handleClick();
+        this.colorArray = ['yellow', 'red', 'green', 'brown'];
         this.callBack = this.callBack.bind(this);
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
         this.useCityCard = this.useCityCard.bind(this);
@@ -21,7 +22,7 @@ class GameBoard {
         $('#clickMe').on('click', '.factoryCard', this.callBack);
     }
     callBack(event){
-        var testVar = $(event.currentTarget);
+        $(event.currentTarget);
     }
     createFactoryCard() {
         for (var factoryIndex = 0; this.factory.length < 6; factoryIndex++) {
@@ -29,6 +30,14 @@ class GameBoard {
             this.factory.push(factoryDisplayCard);
             var factoryCardDomElement = factoryDisplayCard.renderFactory();
             $('.factoryContainer').append(factoryCardDomElement);
+            for(var colorIndex = 0; colorIndex < this.colorArray.length; colorIndex++ ){
+                var currentColorValue = gameboard.factory[factoryIndex].input[this.colorArray[colorIndex]];
+                var colorElement = $('<div>', {
+                    class: 'colorValue',
+                    'text': this.colorArray[colorIndex] + ': ' + currentColorValue,
+                })
+                $(".factoryCard").last().append(colorElement);
+            }
         }
         if (this.factory.length < 6) {
             createFactoryCard();
@@ -41,6 +50,14 @@ class GameBoard {
             this.city.push(cityDisplayCard);
             var cityCardDomElement = cityDisplayCard.renderCity();
             $('.cityContainer').append(cityCardDomElement);
+                for(var colorIndex = 0; colorIndex < this.colorArray.length; colorIndex++ ){
+                    var currentColorValue = gameboard.city[cityIndex].input[this.colorArray[colorIndex]];
+                    var colorElement = $('<div>', {
+                        class: 'colorValue',
+                        'text': this.colorArray[colorIndex] + ': ' + currentColorValue,
+                    })
+                    $(".cityCard").last().append(colorElement);
+                }
         }
         if (this.city.length < 5) {
             createCityCard();
