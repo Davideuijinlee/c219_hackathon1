@@ -1,7 +1,7 @@
 class Player {
     constructor(name, playernumber) {
         this.name = name;
-        this.playernumber = playernumber; //used to append cards to the correct container
+        this.playernumber = playernumber; 
         this.spice = {
             yellow: 10,
             red: 10,
@@ -23,12 +23,12 @@ class Player {
         this.showSpiceValue = this.showSpiceValue.bind(this);
         this.updateSpice = this.updateSpice.bind(this);
 
-        this.createStartingSpice(); //creates the divs
-        this.showSpiceValue(); //pushes the value to the divs
+        this.createStartingSpice(); 
+        this.showSpiceValue(); 
         this.logClickedSpice();
     };
 
-    //adds the value of clicked spiced to an object, to be used for conversion cards
+
     logClickedSpice() {
         if (this.playernumber === 1) {
             $(".firstplayer .yellow").click(() => {
@@ -67,7 +67,6 @@ class Player {
         }
     }
 
-    //ties in with creatingStartingSpice
     createSpice(color) {
         var newSpice = $('<div>').addClass('newSpice').css({
             'background-color': color
@@ -81,7 +80,6 @@ class Player {
         }
     }
 
-    //makes the spice colors pop up on the DOM
     createStartingSpice() {
         this.createSpice('yellow');
         this.createSpice('red');
@@ -90,7 +88,6 @@ class Player {
 
     }
 
-    //currently appends to both stat cards, will have to change
     showSpiceValue() {
         var yellow = this.spice.yellow;
         var red = this.spice.red;

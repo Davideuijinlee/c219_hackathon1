@@ -1,8 +1,8 @@
 class GameBoard {
     constructor() {
-        this.city = []; 
-        this.factory = []; 
-        this.displayArea = $('body'); 
+        this.city = [];
+        this.factory = [];
+        this.displayArea = $('body');
         this.players = [];
         this.currentPlayer = 0;
         this.handleClick = this.handleClick.bind(this);
@@ -10,9 +10,18 @@ class GameBoard {
         this.callBack = this.callBack.bind(this);
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
         this.useCityCard = this.useCityCard.bind(this);
+        this.convertSpice = this.convertSpice.bind(this);
 
     }
-    addPlayer(playerName, playerNumber){
+
+    //working on the conversion card, delete if necessary
+    convertSpice(card) {
+        console.log(card.getInput)
+        var currentPlayer = this.players[this.currentPlayer];
+
+    }
+
+    addPlayer(playerName, playerNumber) {
         var player = new Player(playerName, playerNumber);
         this.players.push(player);
     }
@@ -20,7 +29,7 @@ class GameBoard {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
     }
-    callBack(event){
+    callBack(event) {
         //does nothing so far
     }
     createFactoryCard() {
@@ -47,8 +56,8 @@ class GameBoard {
         }
     }
     createStartingCards() {
-        for( var playerIndex=0; playerIndex< this.players.length; playerIndex++){
-            var input= {
+        for (var playerIndex = 0; playerIndex < this.players.length; playerIndex++) {
+            var input = {
                 yellow: 0,
                 red: 0,
                 green: 0,
@@ -60,8 +69,8 @@ class GameBoard {
                 green: 0,
                 brown: 0,
             }
-            var factoryCard1 = new FactoryCard(this.buyFactoryCard, input, output );
-            var input= {
+            var factoryCard1 = new FactoryCard(this.buyFactoryCard, input, output);
+            var input = {
                 yellow: 0,
                 red: 0,
                 green: 0,
@@ -74,24 +83,22 @@ class GameBoard {
                 brown: 0,
             }
             var factoryCard2 = new FactoryCard(this.buyFactoryCard, input, output);
-            this.players[playerIndex].addFactoryCard( factoryCard1);
-            this.players[playerIndex].addFactoryCard( factoryCard2);
+            this.players[playerIndex].addFactoryCard(factoryCard1);
+            this.players[playerIndex].addFactoryCard(factoryCard2);
         }
     }
 
     winCondition() {
-        if(gameboard.players[0].city.length === 2){
+        if (gameboard.players[0].city.length === 2) {
             alert('Player 1 is the Winner!');
-        }
-        else if(gameboard.players[1].city.length === 2){
+        } else if (gameboard.players[1].city.length === 2) {
             alert('Player 2 is the Winner!');
-        }
-        else{
+        } else {
             return;
         }
     }
 
-    buyFactoryCard(card){
+    buyFactoryCard(card) {
         console.log(card.getInput())
         var factoryCost = card.getInput();
 
@@ -100,11 +107,11 @@ class GameBoard {
         var green = factoryCost.green;
         var brown = factoryCost.brown;
 
-        var newCard = $("<div>").addClass('modalCard');
+        var newCard = $("<div>").addClass('modalCard').val(factoryCost);
 
-        var currentPlayer = this.players[ this.currentPlayer ];
+        var currentPlayer = this.players[this.currentPlayer];
 
-        if(currentPlayer.buy(factoryCost)){
+        if (currentPlayer.buy(factoryCost)) {
             currentPlayer.addFactoryCard(card);
             if (this.currentPlayer === 0) {
                 $(newCard).text(`${yellow} | 
@@ -123,11 +130,7 @@ class GameBoard {
         alert('You collected a factory!')
     }
 
-    moveCard(){
-        // currentPlayer.factory.splice()
-    }
-
-    useCityCard(card){
+    useCityCard(card) {
         console.log(card.getInput())
         var cityCost = card.getInput();
 
@@ -138,9 +141,9 @@ class GameBoard {
 
         var newCard = $("<div>").addClass('modalCard');
 
-        var currentPlayer = this.players[ this.currentPlayer ];
+        var currentPlayer = this.players[this.currentPlayer];
 
-        if(currentPlayer.buy(cityCost)){
+        if (currentPlayer.buy(cityCost)) {
             currentPlayer.addCityCard(card);
             if (this.currentPlayer === 0) {
                 $(newCard).text(`${yellow} | 
@@ -160,6 +163,6 @@ class GameBoard {
         alert('You purchased a city!');
         currentPlayer.updateSpice();
         this.winCondition();
-        
+
     }
-} 
+}
