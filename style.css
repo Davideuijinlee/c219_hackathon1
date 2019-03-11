@@ -180,7 +180,9 @@ a {
     color: white;
     font-size: 40%;
 }
-
+/* .resetButton{
+    
+} */
 .modalCard {
     height: 150px;
     width: 100px;
@@ -206,6 +208,11 @@ a {
     right:3%;
     bottom: 0;
 }
+
+.winCondition {
+pointer-events: none;
+}
+
 /*webkit specifies browser support, keyframes specifies animation changes from (0%) one set of styles to(100%) another, glow is the element its bound to*/
 /* text shadow graduates a blur radius in the given color from 10px-70px */
 @-webkit-keyframes glow {

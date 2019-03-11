@@ -100,15 +100,24 @@ class GameBoard {
         if(gameboard.players[0].city.length === 2){
             $('.firstplayer .playertitle').text("Player One WINS!");
             $('.secondplayer .playertitle').text("Bend the knee...");
-
+            $(".factoryContainer").addClass("winCondition");
+            $(".cityContainer").addClass("winCondition");
+            $(".citymodal").addClass("winCondition");
+            $(".conversioncardmodal").addClass("winCondition");
         }
         else if(gameboard.players[1].city.length === 2){
             $('.secondplayer .playertitle').addClass('glow').text('Player Two WINS!');
             $('.firstplayer .playertitle').removeClass('glow').text("Bend the knee...");
+            $(".factoryContainer").addClass("winCondition");
+            $(".cityContainer").addClass("winCondition");
+            $(".citymodal").addClass("winCondition");
+            $(".conversioncardmodal").addClass("winCondition"); 
         }
         else{
             return;
         }
+        // turn off click handlers
+
     }
 
     buyFactoryCard(card){
