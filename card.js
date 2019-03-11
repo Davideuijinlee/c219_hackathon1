@@ -36,6 +36,9 @@ class CityCard{
     getInput(){
         return this.input;
     }
+    getValue(){
+        return this.output;
+    }
     renderCity(){
         // debugger;
         var yellowValue = gameboard.city[0].input['yellow'];

@@ -1,8 +1,8 @@
 class GameBoard {
     constructor() {
-        this.city = []; 
-        this.factory = []; 
-        this.displayArea = $('body'); 
+        this.city = [];
+        this.factory = [];
+        this.displayArea = $('body');
         this.players = [];
         this.currentPlayer = 0; //game starts on player 0
         this.handleClick = this.handleClick.bind(this);
@@ -11,9 +11,16 @@ class GameBoard {
         this.callBack = this.callBack.bind(this);
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
         this.useCityCard = this.useCityCard.bind(this);
-
+        this.convertSpice = this.convertSpice.bind(this);
     }
-    addPlayer(playerName, playerNumber){
+
+    //working on the conversion card, delete if necessary
+    convertSpice(card) {
+
+        var currentPlayer = this.players[this.currentPlayer];
+    }
+
+    addPlayer(playerName, playerNumber) {
         var player = new Player(playerName, playerNumber);
         this.players.push(player);
     }
@@ -21,6 +28,7 @@ class GameBoard {
         $('#clickMe').on('click', '.cityCard', this.callBack);
         $('#clickMe').on('click', '.factoryCard', this.callBack);
     }
+
     callBack(event){
         $(event.currentTarget);
     }
@@ -64,8 +72,8 @@ class GameBoard {
         }
     }
     createStartingCards() {
-        for( var playerIndex=0; playerIndex< this.players.length; playerIndex++){
-            var input= {
+        for (var playerIndex = 0; playerIndex < this.players.length; playerIndex++) {
+            var input = {
                 yellow: 0,
                 red: 0,
                 green: 0,
@@ -77,8 +85,8 @@ class GameBoard {
                 green: 0,
                 brown: 0,
             }
-            var factoryCard1 = new FactoryCard(this.buyFactoryCard, input, output );
-            var input= {
+            var factoryCard1 = new FactoryCard(this.buyFactoryCard, input, output);
+            var input = {
                 yellow: 0,
                 red: 0,
                 green: 0,
@@ -91,12 +99,13 @@ class GameBoard {
                 brown: 0,
             }
             var factoryCard2 = new FactoryCard(this.buyFactoryCard, input, output);
-            this.players[playerIndex].addFactoryCard( factoryCard1);
-            this.players[playerIndex].addFactoryCard( factoryCard2);
+            this.players[playerIndex].addFactoryCard(factoryCard1);
+            this.players[playerIndex].addFactoryCard(factoryCard2);
         }
     }
 
     winCondition() {
+
         if(gameboard.players[0].city.length === 2){
             $('.firstplayer .playertitle').text("Player One WINS!");
             $('.secondplayer .playertitle').text("Bend the knee...");
@@ -114,57 +123,90 @@ class GameBoard {
             $(".conversioncardmodal").addClass("winCondition"); 
         }
         else{
-            return;
-        }
         // turn off click handlers
-
     }
+}
 
-    buyFactoryCard(card){
-        console.log(card.getInput());
+    buyFactoryCard(card) {
         var factoryCost = card.getInput();
-        var currentPlayer = this.players[ this.currentPlayer ];
-        if(currentPlayer.buy(factoryCost)){
+
+        var yellow = factoryCost.yellow;
+        var red = factoryCost.red;
+        var green = factoryCost.green;
+        var brown = factoryCost.brown;
+
+        var newCard = $("<div>").addClass('modalCard').val(factoryCost);
+
+        var currentPlayer = this.players[this.currentPlayer];
+        var cardStats = `${yellow} | 
+        ${red} | 
+        ${green} | 
+        ${brown}`;
+        if (currentPlayer.buy(factoryCost)) {
             currentPlayer.addFactoryCard(card);
+            if (this.currentPlayer === 0) {
+                $(newCard).text(cardStats);
+                $('#p1factory').append(newCard);
+            } else if (this.currentPlayer === 1) {
+                $(newCard).text(cardStats);
+                $('#p2factory').append(newCard);
+            }
         }
     }
-    useCityCard(card){
-        console.log(card.getInput());
+
+    useCityCard(card) {
         var cityCost = card.getInput();
-        var currentPlayer = this.players[ this.currentPlayer ];
-        if(currentPlayer.buy(cityCost)){
+        var cityValue = card.getValue();
+
+        var yellow = cityCost.yellow;
+        var red = cityCost.red;
+        var green = cityCost.green;
+        var brown = cityCost.brown;
+
+        var newCard = $("<div>").addClass('modalCard');
+        var cardStats = `${yellow} | 
+        ${red} | 
+        ${green} | 
+        ${brown} 
+        ${cityValue}`;
+
+        var currentPlayer = this.players[this.currentPlayer];
+        if (currentPlayer.buy(cityCost)) {
             currentPlayer.addCityCard(card);
+            if (this.currentPlayer === 0) {
+                $(newCard).text(cardStats);
+                $('#p1city').append(newCard);
+            } else if (this.currentPlayer === 1) {
+                $(newCard).text(cardStats);
+                $('#p2city').append(newCard);
+            }
         }
         currentPlayer.updateSpice();
         this.winCondition();
     }
+    
     changePlayerTurn(){
-        console.log("playerTurn has been called");
-
         if(this.currentPlayer === 0){//player 1
             this.currentPlayer = 1;//change to player 2
             $(".firstplayer .playertitle").removeClass("glow");
             $(".secondplayer .playertitle").addClass("glow");
-            console.log("current player is now player 2")
         }else{//this.currentPlayer === 1 - player is 2
             this.currentPlayer = 0;//change to player 1
             $(".secondplayer .playertitle").removeClass("glow");
             $(".firstplayer .playertitle").addClass("glow");
-            console.log("current player is now player 1")
         }
         //when player three and four are enabled delete the above else and uncomment the below
         /*
         else if(this.currentPlayer === 1){//player 2
             this.currentPlayer = 2;//change to player 3
-            console.log("current player is now player 3")
         }else if(this.currentPlayer === 2){//player 3
             this.currentPlayer = 3;//change to player 4
-            console.log("current player is now player 4")
         }else{//this.currentPlayer === 3 - player 4
             this.currentPlayer = 0;//change to player 1
-            console.log("current player is now player 1")
         }
         */
-    }
+        }
+    } 
 
-} 
+
+
