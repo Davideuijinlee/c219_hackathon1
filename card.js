@@ -37,12 +37,16 @@ class CityCard{
         return this.input;
     }
     renderCity(){
+        // debugger;
+        var yellowValue = gameboard.city[0].input['yellow'];
+        var yellowValue = gameboard.city[0].input['gree'];
         this.cityElement = $('<div>',{
             class: "cityCard",
             on: {
                 click: this.handleClick
-            }
-        });
+            },
+        },
+        );
         return this.cityElement;
     }
 }
