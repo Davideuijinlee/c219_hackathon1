@@ -110,6 +110,7 @@ class GameBoard {
         var newCard = $("<div>").addClass('modalCard').val(factoryCost);
 
         var currentPlayer = this.players[this.currentPlayer];
+        
         var cardStats = `${yellow} | 
         ${red} | 
         ${green} | 
