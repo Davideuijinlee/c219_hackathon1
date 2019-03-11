@@ -110,20 +110,18 @@ class GameBoard {
         var newCard = $("<div>").addClass('modalCard').val(factoryCost);
 
         var currentPlayer = this.players[this.currentPlayer];
+        var cardStats = `${yellow} | 
+        ${red} | 
+        ${green} | 
+        ${brown}`;
 
         if (currentPlayer.buy(factoryCost)) {
             currentPlayer.addFactoryCard(card);
             if (this.currentPlayer === 0) {
-                $(newCard).text(`${yellow} | 
-                ${red} | 
-                ${green} | 
-                ${brown}`);
+                $(newCard).text(cardStats);
                 $('#p1factory').append(newCard);
             } else if (this.currentPlayer === 1) {
-                $(newCard).text(`${yellow} | 
-                ${red} | 
-                ${green} | 
-                ${brown}`);
+                $(newCard).text(cardStats);
                 $('#p2factory').append(newCard);
             }
         }
@@ -133,6 +131,7 @@ class GameBoard {
     useCityCard(card) {
         console.log(card.getInput())
         var cityCost = card.getInput();
+        var cityValue = card.getValue();
 
         var yellow = cityCost.yellow;
         var red = cityCost.red;
@@ -140,22 +139,21 @@ class GameBoard {
         var brown = cityCost.brown;
 
         var newCard = $("<div>").addClass('modalCard');
+        var cardStats = `${yellow} | 
+        ${red} | 
+        ${green} | 
+        ${brown} 
+        ${cityValue}`;
 
         var currentPlayer = this.players[this.currentPlayer];
 
         if (currentPlayer.buy(cityCost)) {
             currentPlayer.addCityCard(card);
             if (this.currentPlayer === 0) {
-                $(newCard).text(`${yellow} | 
-                ${red} | 
-                ${green} | 
-                ${brown}`);
+                $(newCard).text(cardStats);
                 $('#p1city').append(newCard);
             } else if (this.currentPlayer === 1) {
-                $(newCard).text(`${yellow} | 
-                ${red} | 
-                ${green} | 
-                ${brown}`);
+                $(newCard).text(cardStats);
                 $('#p2city').append(newCard);
             }
         }

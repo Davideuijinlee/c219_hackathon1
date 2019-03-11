@@ -30,6 +30,9 @@ class CityCard{
     getInput(){
         return this.input;
     }
+    getValue(){
+        return this.output;
+    }
     renderCity(){
         this.cityElement = $('<div>',{
             class: "cityCard",
