@@ -155,15 +155,8 @@ a {
 
 }
 
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
-}
-
 .modalCard {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     height: 150px;
@@ -171,4 +164,5 @@ a {
     background-color: black;
     border-radius: 10px;
     color: white;
+    margin: 0 2px;
 }

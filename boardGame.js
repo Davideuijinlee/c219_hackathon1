@@ -10,7 +10,6 @@ class GameBoard {
         this.callBack = this.callBack.bind(this);
         this.buyFactoryCard = this.buyFactoryCard.bind(this);
         this.useCityCard = this.useCityCard.bind(this);
-        this.newCard = $("<div>").addClass('modalCard');
 
     }
     addPlayer(playerName, playerNumber){
@@ -101,23 +100,24 @@ class GameBoard {
         var green = factoryCost.green;
         var brown = factoryCost.brown;
 
+        var newCard = $("<div>").addClass('modalCard');
+
         var currentPlayer = this.players[ this.currentPlayer ];
 
         if(currentPlayer.buy(factoryCost)){
-            debugger;
             currentPlayer.addFactoryCard(card);
             if (this.currentPlayer === 0) {
-                $(this.newCard).text(`${yellow} | 
+                $(newCard).text(`${yellow} | 
                 ${red} | 
                 ${green} | 
                 ${brown}`);
-                $('.p1factorycontainer').append(this.newCard);
+                $('#p1factory').append(newCard);
             } else if (this.currentPlayer === 1) {
-                $(this.newCard).text(`${yellow} | 
+                $(newCard).text(`${yellow} | 
                 ${red} | 
                 ${green} | 
                 ${brown}`);
-                $('.p2factorycontainer').append(this.newCard);
+                $('#p2factory').append(newCard);
             }
         }
         alert('You collected a factory!')
@@ -130,12 +130,36 @@ class GameBoard {
     useCityCard(card){
         console.log(card.getInput())
         var cityCost = card.getInput();
+
+        var yellow = cityCost.yellow;
+        var red = cityCost.red;
+        var green = cityCost.green;
+        var brown = cityCost.brown;
+
+        var newCard = $("<div>").addClass('modalCard');
+
         var currentPlayer = this.players[ this.currentPlayer ];
+
         if(currentPlayer.buy(cityCost)){
             currentPlayer.addCityCard(card);
+            if (this.currentPlayer === 0) {
+                $(newCard).text(`${yellow} | 
+                ${red} | 
+                ${green} | 
+                ${brown}`);
+                $('#p1city').append(newCard);
+            } else if (this.currentPlayer === 1) {
+                $(newCard).text(`${yellow} | 
+                ${red} | 
+                ${green} | 
+                ${brown}`);
+                $('#p2city').append(newCard);
+            }
         }
+
+        alert('You purchased a city!');
         currentPlayer.updateSpice();
         this.winCondition();
-        alert('You purchased a city!')
+        
     }
 } 
