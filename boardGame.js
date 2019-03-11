@@ -137,11 +137,11 @@ class GameBoard {
 
         var newCard = $("<div>").addClass('modalCard').val(factoryCost);
 
-        var currentPlayer = this.players[this.currentPlayer];
         var cardStats = `${yellow} | 
         ${red} | 
         ${green} | 
         ${brown}`;
+        var currentPlayer = this.players[this.currentPlayer];
         if (currentPlayer.buy(factoryCost)) {
             currentPlayer.addFactoryCard(card);
             if (this.currentPlayer === 0) {
@@ -167,7 +167,7 @@ class GameBoard {
         var cardStats = `${yellow} | 
         ${red} | 
         ${green} | 
-        ${brown} 
+        ${brown} | 
         ${cityValue}`;
 
         var currentPlayer = this.players[this.currentPlayer];
