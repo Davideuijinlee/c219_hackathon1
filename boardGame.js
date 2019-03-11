@@ -15,9 +15,8 @@ class GameBoard {
     }
 
     //working on the conversion card, delete if necessary
-    convertSpice(card) {
-
-        var currentPlayer = this.players[this.currentPlayer];
+    convertSpice() {
+        this.players[this.currentPlayer];
     }
 
     addPlayer(playerName, playerNumber) {
