@@ -117,12 +117,22 @@ body {
 .factoryContainer{
     border-radius: 0 10px 10px 0;
 }
-.cityCard, .factoryCard {
-    height: 40%;
+.cityCard {
+    height: 15%;
     width: 70%;
     margin: 2px 2px;
     background-color: black;
     color: white;
+    border-radius: 10px;
+}
+
+.factoryCard {
+    height: 12%;
+    width: 70%;
+    margin: 2px 2px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
 }
 
 .newSpice {
@@ -183,6 +193,18 @@ a {
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
     animation: glow 1s ease-in-out infinite alternate;
+}
+
+.directionsLink {
+    /* background-image: url(images/directions.png);
+    background-size: 5%;
+    background-position: contain;
+    background-repeat: none; */
+    position: absolute;
+    height:5%;
+    width: 5%;
+    right:3%;
+    bottom: 0;
 }
 /*webkit specifies browser support, keyframes specifies animation changes from (0%) one set of styles to(100%) another, glow is the element its bound to*/
 /* text shadow graduates a blur radius in the given color from 10px-70px */
